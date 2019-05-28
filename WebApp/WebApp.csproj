@@ -269,10 +269,15 @@
     <Compile Include="Models\Karta.cs" />
     <Compile Include="Models\Koeficijent.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Linija.cs" />
     <Compile Include="Models\Putnici.cs" />
+    <Compile Include="Models\RedVoznje.cs" />
     <Compile Include="Models\Rola.cs" />
+    <Compile Include="Models\Stanica.cs" />
     <Compile Include="Models\Stavka.cs" />
+    <Compile Include="Models\TipDana.cs" />
     <Compile Include="Models\TipPutnika.cs" />
+    <Compile Include="Models\TipSaobracaja.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
