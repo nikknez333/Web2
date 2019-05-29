@@ -10,24 +10,32 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models.Gradski_Saobracaj;
 using WebApp.Persistence;
+using WebApp.Persistence.Repository;
+using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
     public class RedVoznjesController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IRedoviVoznjeRepository _repo;
+        private readonly IUnitOfWork _unit;
 
-        // GET: api/RedVoznjes
-        public IQueryable<RedVoznje> GetRedVoznjes()
+        public RedVoznjesController(IRedoviVoznjeRepository repo, IUnitOfWork unit)
         {
-            return db.RedoviVoznji;
+            _repo = repo;
+            _unit = unit;
+        }
+        // GET: api/RedVoznjes
+        public IEnumerable<RedVoznje> GetRedVoznjes()
+        {
+            return _repo.GetAll();
         }
 
         // GET: api/RedVoznjes/5
         [ResponseType(typeof(RedVoznje))]
-        public IHttpActionResult GetRedVoznje(int id)
+        public IHttpActionResult GetRedVoznjeById(int id)
         {
-            RedVoznje redVoznje = db.RedoviVoznji.Find(id);
+            RedVoznje redVoznje = _repo.Get(id);
             if (redVoznje == null)
             {
                 return NotFound();
@@ -50,11 +58,11 @@ namespace WebApp.Controllers
                 return BadRequest();
             }
 
-            db.Entry(redVoznje).State = EntityState.Modified;
+            _repo.Update(redVoznje);
 
             try
             {
-                db.SaveChanges();
+                _unit.Complete();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,6 +79,20 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [ResponseType(typeof(RedVoznje))]
+        public IEnumerable<RedVoznje> GetRedVoznje(int idLinija, int idDan, int idSaobracaj)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return BadRequest(ModelState);
+            }
+
+            return _repo.Find(x => x.IzabranaLinija.Id == idLinija && x.IzabranTipDana.Id == idDan && x.IzabranTipSaobracaja.Id == idSaobracaj);
+            
+
+            //return CreatedAtRoute("DefaultApi", new { id = redVoznje.Id }, redVoznje);
+        }
+
         // POST: api/RedVoznjes
         [ResponseType(typeof(RedVoznje))]
         public IHttpActionResult PostRedVoznje(RedVoznje redVoznje)
@@ -80,8 +102,8 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.RedoviVoznji.Add(redVoznje);
-            db.SaveChanges();
+            _repo.Add(redVoznje);
+            _unit.Complete();
 
             return CreatedAtRoute("DefaultApi", new { id = redVoznje.Id }, redVoznje);
         }
@@ -90,14 +112,14 @@ namespace WebApp.Controllers
         [ResponseType(typeof(RedVoznje))]
         public IHttpActionResult DeleteRedVoznje(int id)
         {
-            RedVoznje redVoznje = db.RedoviVoznji.Find(id);
+            RedVoznje redVoznje = _repo.Get(id);
             if (redVoznje == null)
             {
                 return NotFound();
             }
 
-            db.RedoviVoznji.Remove(redVoznje);
-            db.SaveChanges();
+            _repo.Remove(redVoznje);
+            _unit.Complete();
 
             return Ok(redVoznje);
         }
@@ -106,14 +128,14 @@ namespace WebApp.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _unit.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool RedVoznjeExists(int id)
         {
-            return db.RedoviVoznji.Count(e => e.Id == id) > 0;
+            return _repo.Find(e => e.Id == id).Count() > 0;
         }
     }
 }

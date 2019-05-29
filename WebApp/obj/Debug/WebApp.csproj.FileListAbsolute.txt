@@ -294,11 +294,6 @@ C:\Users\e3104-2015\WebBlok7\Web2\WebApp\obj\Debug\WebApp.csproj.GenerateResourc
 C:\Users\e3104-2015\WebBlok7\Web2\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e3104-2015\WebBlok7\Web2\WebApp\obj\Debug\WebApp.dll
 C:\Users\e3104-2015\WebBlok7\Web2\WebApp\obj\Debug\WebApp.pdb
-C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
-C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.Migrations.InitialModels.resources
-C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.csproj.GenerateResource.Cache
-C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.dll
-C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.pdb
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\WebApp.dll.config
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\WebApp.dll
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\WebApp.pdb
@@ -441,3 +436,8 @@ C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\Microsoft.Owin.Secur
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\System.Web.Http.Owin.xml
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
+C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.Migrations.InitialModels.resources
+C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.csproj.GenerateResource.Cache
+C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.dll
+C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.pdb
