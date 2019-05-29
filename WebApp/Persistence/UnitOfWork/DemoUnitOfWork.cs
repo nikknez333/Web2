@@ -10,12 +10,15 @@ namespace WebApp.Persistence.UnitOfWork
 {
     public class DemoUnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly ApplicationDbContext _context;
       
-        public DemoUnitOfWork(DbContext context)
+        public DemoUnitOfWork(ApplicationDbContext context)
         {
             _context = context;
+            RedoviVoznje = new RedoviVoznjeRepository(_context);
         }
+
+        public IRedoviVoznjeRepository RedoviVoznje { get; private set; }
 
         public int Complete()
         {

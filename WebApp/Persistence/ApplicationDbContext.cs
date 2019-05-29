@@ -12,20 +12,20 @@ namespace WebApp.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        DbSet<CenaStavke> CeneStavki { get; set; }
-        DbSet<Cenovnik> Cenovnici { get; set; }
-        DbSet<Karta> Karte { get; set; }
-        DbSet<Koeficijent> Koeficijenti { get; set; }
-        DbSet<Korisnik> Korisnici { get; set; }
-        DbSet<Linija> Linije { get; set; }
-        DbSet<Putnici> Putnici { get; set; }
-        DbSet<RedVoznje> RedoviVoznji { get; set; }
-        DbSet<Rola> Role { get; set; }
-        DbSet<Stanica> Stanice { get; set; }
-        DbSet<Stavka> Stavke { get; set; }
-        DbSet<TipDana> TipoviDana { get; set; }
-        DbSet<TipPutnika> TipoviPutnika { get; set; }
-        DbSet<TipSaobracaja> TipoviSaobracaja { get; set; }
+        public DbSet<CenaStavke> CeneStavki { get; set; }
+        public DbSet<Cenovnik> Cenovnici { get; set; }
+        public DbSet<Karta> Karte { get; set; }
+        public DbSet<Koeficijent> Koeficijenti { get; set; }
+        public DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Linija> Linije { get; set; }
+        public DbSet<Putnici> Putnici { get; set; }
+        public DbSet<RedVoznje> RedoviVoznji { get; set; }
+        public DbSet<Rola> Role { get; set; }
+        public DbSet<Stanica> Stanice { get; set; }
+        public DbSet<Stavka> Stavke { get; set; }
+        public DbSet<TipDana> TipoviDana { get; set; }
+        public DbSet<TipPutnika> TipoviPutnika { get; set; }
+        public DbSet<TipSaobracaja> TipoviSaobracaja { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -36,5 +36,6 @@ namespace WebApp.Persistence
         {
             return new ApplicationDbContext();
         }
+        
     }
 }

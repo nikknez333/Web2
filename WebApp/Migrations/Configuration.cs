@@ -22,6 +22,9 @@ namespace WebApp.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 1, IzabranaLinija = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "5b", Stanice = null }, IzabranTipDana = null, IzabranTipSaobracaja = null, Polazak = DateTime.Now });
+            context.SaveChanges();
+
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
