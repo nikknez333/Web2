@@ -8,6 +8,7 @@ namespace WebApp.Models
     public class TipPutnika
     {
         public int Id { get; set; }
+
         public string Naziv { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace WebApp.Models
     public class Koeficijent
     {
         public int Id { get; set; }
+
         public string Naziv { get; set; }
+
         public double Value { get; set; }
-
-
     }
 }
