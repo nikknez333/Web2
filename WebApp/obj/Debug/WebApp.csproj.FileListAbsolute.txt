@@ -441,3 +441,4 @@ C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.Migrati
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.csproj.GenerateResource.Cache
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.dll
 C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.pdb
+C:\Users\dmilosevic\Source\Repos\nikknez333\Web2\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
