@@ -7,6 +7,7 @@ namespace WebApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using WebApp.Models;
+    using WebApp.Models.Gradski_Saobracaj;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WebApp.Persistence.ApplicationDbContext>
     {
@@ -22,7 +23,16 @@ namespace WebApp.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 1, IzabranaLinija = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "5b", Stanice = null }, IzabranTipDana = null, IzabranTipSaobracaja = null, Polazak = DateTime.Now });
+            Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "5b", Stanice = null };
+            Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = null };
+            TipSaobracaja tipSaobracaja1 = new TipSaobracaja() { Id = 1, Naziv = "Gradski" };
+            TipDana tipDana1 = new TipDana() { Id = 55, Naziv = "Radni Dan" };
+
+
+            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 1, IzabranaLinija = lin1, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = DateTime.Now });
+            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 2, IzabranaLinija = lin1, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 13, 40, 0) });
+            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 3, IzabranaLinija = lin2, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 13, 53, 0) });
+            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 4, IzabranaLinija = lin2, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 14, 10, 0) });
             context.SaveChanges();
 
             if (!context.Roles.Any(r => r.Name == "Admin"))
