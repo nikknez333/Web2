@@ -19,6 +19,17 @@ namespace WebApp.Persistence.UnitOfWork
         }
 
         public IRedoviVoznjeRepository RedoviVoznje { get; private set; }
+        public ITipSaobracajaRepository TipSaobracaja { get; private set; }
+        public ITipPutnikaRepository TipPutnika { get; private set; }
+        public ITipDanaRepository TipDana { get; private set; }
+        public IStavkaRepository Stavka { get; private set; }
+        public IStanicaRepository Stanica { get; private set; }
+        public IPutniciRepository Putnici { get; private set; }
+        public ILinijaRepository Linija { get; private set; }
+        public IKorisnikRepository Korisnik { get; private set; }
+        public IKartaRepository Karta { get; private set; }
+        public ICenovnikRepository Cenovnik { get; private set; }
+        public ICenaStavkeRepository CenaStavke { get; private set; }
 
         public int Complete()
         {

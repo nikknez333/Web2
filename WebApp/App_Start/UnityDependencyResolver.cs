@@ -71,6 +71,17 @@ namespace WebApp.App_Start
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
             container.RegisterType<IRedoviVoznjeRepository, RedoviVoznjeRepository>();
+            container.RegisterType<IStanicaRepository, StanicaRepository>();
+            container.RegisterType<IKartaRepository, KartaRepository>();
+            container.RegisterType<ITipSaobracajaRepository, TipSaobracajaRepository>();
+            container.RegisterType<ITipPutnikaRepository, TipPutnikaRepository>();
+            container.RegisterType<ITipDanaRepository, TipDanaRepository>();
+            container.RegisterType<IStavkaRepository, StavkaRepository>();
+            container.RegisterType<IPutniciRepository, PutniciRepository>();
+            container.RegisterType<ILinijaRepository, LinijaRepository>();
+            container.RegisterType<IKorisnikRepository, KorisnikRepository>();
+            container.RegisterType<ICenovnikRepository, CenovnikRepository>();
+            container.RegisterType<ICenaStavkeRepository, CenaStavkeRepository>();
         }
 
         public void Dispose()
