@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RedVoznjeService } from '../red-voznje.service';
 
 @Component({
   selector: 'app-red-voznje',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RedVoznjeComponent implements OnInit {
 
-  constructor() { }
+  polasci: string[];
+
+  constructor(private rvService: RedVoznjeService) { }
 
   ngOnInit() {
+    this.getPolasci();
+  }
+
+  getPolasci(): void{
+    //this.polasci = this.rvService.getPolasci();
+    this.rvService.getPolasci()
+    .subscribe(polasci => this.polasci = polasci);
   }
 
 }
