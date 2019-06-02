@@ -9,17 +9,38 @@ import { RedVoznjeService } from '../red-voznje.service';
 export class RedVoznjeComponent implements OnInit {
 
   polasci: string[];
+  tipSaobracaja = '';
+  tipDana = '';
+  linija = '';
 
+  linije : string[];
+  tipoviDana : string[];
+  tipoviSaobracaja : string[];
+  
   constructor(private rvService: RedVoznjeService) { }
 
   ngOnInit() {
-    this.getPolasci();
+    //this.getPolasci();
+    this.getInitialData();
+  }
+
+  getInitialData(): void{
+    this.rvService.getInitialData().subscribe(res => {
+
+      var info = JSON.parse(JSON.stringify(res));
+      this.linije = info.Linije;
+      this.tipoviDana = info.Dani;
+      this.tipoviSaobracaja = info.Saobracaji;
+    });
   }
 
   getPolasci(): void{
-    //this.polasci = this.rvService.getPolasci();
-    this.rvService.getPolasci()
+    this.rvService.getPolasci(this.tipSaobracaja, this.tipDana, this.linija)
     .subscribe(polasci => this.polasci = polasci);
+  }
+
+  onSubmit(): void{
+    this.getPolasci();
   }
 
 }
