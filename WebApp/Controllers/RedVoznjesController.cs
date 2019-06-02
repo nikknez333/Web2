@@ -26,9 +26,23 @@ namespace WebApp.Controllers
             _unit = unit;
         }
         // GET: api/RedVoznjes
-        public IEnumerable<RedVoznje> GetRedVoznjes()
-        {
-            return _repo.GetAll();
+        //public IEnumerable<RedVoznje> GetRedVoznjes()
+        //{
+        //    return _repo.GetAll();
+        //}
+
+        public string[] GetRedVoznjeString()
+        {            
+            List<RedVoznje> redVoznje = _repo.GetAll().ToList();
+            string[] polasci = new string[redVoznje.Count];
+
+
+            for (int i = 0; i < redVoznje.Count; i++)
+            {
+                polasci[i] = (redVoznje[i] as RedVoznje).Polazak.ToShortTimeString();
+            }
+
+            return polasci;
         }
 
         // GET: api/RedVoznjes/5
