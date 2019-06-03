@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RedVoznjeService } from '../red-voznje.service';
+import { RedVoznjeService } from '../Services/red-voznje.service';
 
 @Component({
   selector: 'app-red-voznje',
