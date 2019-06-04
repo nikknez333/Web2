@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
+import { HomepageContentComponent } from './homepage-content/homepage-content.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
     LoginFormComponent,
     NavigationBarComponent,
     RedVoznjeComponent,
+    HomepageContentComponent,
     
   ],
   imports: [
@@ -22,6 +24,6 @@ import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, LoginFormComponent, NavigationBarComponent,RedVoznjeComponent]
+  bootstrap: [AppComponent, HomepageContentComponent]
 })
 export class AppModule { }

@@ -1,0 +1,40 @@
+.bg-light{
+    background-color: transparent !important;
+}
+
+.navbar-brand{
+    color: #fff;
+    font-size: 20px;
+    font-family: poppins;
+    padding: 20px;
+    font-weight: 900;
+    z-index:100;
+}
+
+.navbar-brand span{
+    padding-left:10px;
+    z-index:10;
+}
+
+.navbar{
+        position:absolute;
+        width:100%;
+        z-index:10;
+        max-width:100%;
+  }
+
+.nav-link{
+    color:#fff;
+    font-family: poppins;
+    font-size: 15px;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    z-index:10;
+}
+
+img{
+    background-color:transparent !important;
+}
+
