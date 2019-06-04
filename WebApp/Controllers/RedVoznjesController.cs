@@ -15,6 +15,13 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    class ResponseData
+    {
+        public List<string> Linije { get; set; }
+        public List<string> Dani { get; set; }
+        public List<string> Saobracaji { get; set; }
+    }
+
     public class RedVoznjesController : ApiController
     {
         private readonly IRedoviVoznjeRepository _repo;
@@ -25,24 +32,26 @@ namespace WebApp.Controllers
             _repo = repo;
             _unit = unit;
         }
+
         // GET: api/RedVoznjes
-        //public IEnumerable<RedVoznje> GetRedVoznjes()
-        //{
-        //    return _repo.GetAll();
-        //}
+        public IHttpActionResult GetRedVoznjeString()
+        {
+            ResponseData responseData = new ResponseData();
 
-        public string[] GetRedVoznjeString()
-        {            
-            List<RedVoznje> redVoznje = _repo.GetAll().ToList();
-            string[] polasci = new string[redVoznje.Count];
-
-
-            for (int i = 0; i < redVoznje.Count; i++)
+            using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                polasci[i] = (redVoznje[i] as RedVoznje).Polazak.ToShortTimeString();
-            }
+                var linijeList = ctx.Linije.ToArray();
+                var daniList = ctx.TipoviDana.ToList();
+                var saobList = ctx.TipoviSaobracaja.ToList();
 
-            return polasci;
+
+                responseData.Linije = linijeList.Select(s => s.RedniBroj).ToList();
+                responseData.Saobracaji = saobList.Select(s => s.Naziv).ToList();
+                responseData.Dani = daniList.Select(s => s.Naziv).ToList();
+            }
+                
+
+            return Ok(responseData);
         }
 
         // GET: api/RedVoznjes/5
@@ -93,17 +102,26 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [ResponseType(typeof(RedVoznje))]
-        public IEnumerable<RedVoznje> GetRedVoznje(int idLinija, int idDan, int idSaobracaj)
+       // [ResponseType(typeof(RedVoznje))]
+        public string[] GetRedVoznje(string linija, string dan, string saobracaj)
         {
             if (!ModelState.IsValid)
             {
                 //return BadRequest(ModelState);
+                return null;
             }
 
-            return _repo.Find(x => x.IzabranaLinija.Id == idLinija && x.IzabranTipDana.Id == idDan && x.IzabranTipSaobracaja.Id == idSaobracaj);
-            
+            List<RedVoznje> redVoznjes = _repo.Find(x => x.IzabranaLinija.RedniBroj.ToLower() == linija.ToLower() &&
+                                   x.IzabranTipDana.Naziv.ToLower() == dan.ToLower() &&
+                                   x.IzabranTipSaobracaja.Naziv.ToLower() == saobracaj.ToLower()).ToList();
 
+            string[] polasci = new string[redVoznjes.Count];
+            for (int i = 0; i < redVoznjes.Count; i++)
+            {
+                polasci[i] = (redVoznjes[i] as RedVoznje).Polazak.ToShortTimeString();
+            }
+
+            return polasci;
             //return CreatedAtRoute("DefaultApi", new { id = redVoznje.Id }, redVoznje);
         }
 
