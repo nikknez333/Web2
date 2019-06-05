@@ -266,6 +266,14 @@
     <Compile Include="Migrations\201905281101235_InitialModels.Designer.cs">
       <DependentUpon>201905281101235_InitialModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906051241076_RoleIPutniciKeyJeNaziv.cs" />
+    <Compile Include="Migrations\201906051241076_RoleIPutniciKeyJeNaziv.Designer.cs">
+      <DependentUpon>201906051241076_RoleIPutniciKeyJeNaziv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906051249064_KorisnikPKJeEmail.cs" />
+    <Compile Include="Migrations\201906051249064_KorisnikPKJeEmail.Designer.cs">
+      <DependentUpon>201906051249064_KorisnikPKJeEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -416,6 +424,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905281101235_InitialModels.resx">
       <DependentUpon>201905281101235_InitialModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051241076_RoleIPutniciKeyJeNaziv.resx">
+      <DependentUpon>201906051241076_RoleIPutniciKeyJeNaziv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051249064_KorisnikPKJeEmail.resx">
+      <DependentUpon>201906051249064_KorisnikPKJeEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

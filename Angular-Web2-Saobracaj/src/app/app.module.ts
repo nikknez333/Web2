@@ -10,6 +10,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { HomepageContentComponent } from './homepage-content/homepage-content.component';
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CenovnikComponent } from './cenovnik/cenovnik.component';
     RedVoznjeComponent,
     HomepageContentComponent,
     CenovnikComponent,
+    RegisterFormComponent,
     
   ],
   imports: [

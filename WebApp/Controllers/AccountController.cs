@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -14,6 +15,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
+using WebApp.Persistence;
 using WebApp.Providers;
 using WebApp.Results;
 
@@ -328,7 +330,7 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -336,6 +338,30 @@ namespace WebApp.Controllers
             {
                 return GetErrorResult(result);
             }
+            
+            //dodaj ostale podatke korisnika u tabelu koju smo mi kreirali
+            ApplicationDbContext context = new ApplicationDbContext();
+
+            Korisnik noviKorisnik = new Korisnik()
+            {
+                Email = model.Email,
+                Adresa = model.Adresa,
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                DatumRodjenja = model.DatumRodjenja,
+                IsVerified = model.TipPutnika.Equals("Regularni"), //initial TRUE samo ako je Regularni korisnik
+                Rola = context.Role.Find("Putnik"),
+            };
+
+            context.Korisnici.Add(noviKorisnik);
+
+            context.Putnici.Add(new Putnici()
+            {
+                Korisnik = noviKorisnik,
+                TipPutnika = context.TipoviPutnika.Find(model.TipPutnika),
+            });
+            
+            context.SaveChanges();
 
             return Ok();
         }

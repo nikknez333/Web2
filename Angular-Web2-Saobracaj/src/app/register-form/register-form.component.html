@@ -1,0 +1,85 @@
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+            <form class="form-horizontal" role="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <h2>Registration</h2>
+                <div class="form-group">
+                    <!-- <label for="firstName" class="col-sm-3 control-label">First Name</label> -->
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="First Name" class="form-control" name="Ime" ngModel required #Ime="ngModel" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="lastName" class="col-sm-3 control-label">Last Name</label> -->
+                    <div class="col-sm-9">
+                        <input type="text" id="lastName" placeholder="Last Name" class="form-control" name="Prezime" ngModel required #Prezime="ngModel" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="email" class="col-sm-3 control-label">Email* </label> -->
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" class="form-control" name="Email" ngModel required #Email="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="password" class="col-sm-3 control-label">Password*</label> -->
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control" name="Password" ngModel required #Password="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="password" class="col-sm-3 control-label">Confirm Password*</label> -->
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Confirm Password" class="form-control" name="ConfirmPassword" ngModel required #ConfirmPassword="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label> -->
+                    <div class="col-sm-9">
+                        <input type="date" id="birthDate" class="form-control" name="DatumRodjenja" ngModel required #DatumRodjenja="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="address" class="col-sm-3 control-label">Address*</label> -->
+                  <div class="col-sm-9">
+                      <input type="address" id="address" placeholder="Address" class="form-control" name="Adresa" ngModel required #Adresa="ngModel">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Tip putnika</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="TipPutnika" id="Regularni" value="Regularni" checked="checked" ngModel>Regularni
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="TipPutnika" id="Djak" value="Djak" ngModel>Djak
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                              <label class="radio-inline">
+                                  <input type="radio" name="TipPutnika" id="Penzioner" value="Penzioner" ngModel>Penzioner
+                              </label>
+                          </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <span class="help-block">*Required fields</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
