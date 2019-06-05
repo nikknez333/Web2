@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { RedVoznjeComponent } from './red-voznje/red-voznje.component';
 import { HomepageContentComponent } from './homepage-content/homepage-content.component';
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     HomepageContentComponent,
     CenovnikComponent,
     RegisterFormComponent,
+    MrezaLinijaComponent
     
   ],
   imports: [
@@ -28,8 +31,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
   ],
   providers: [],
-  bootstrap: [AppComponent, HomepageContentComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
