@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 
@@ -13,6 +13,7 @@ import { HomepageContentComponent } from './homepage-content/homepage-content.co
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
+import { JwtInterceptor } from './Auth/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,13 @@ import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
     FormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [ 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

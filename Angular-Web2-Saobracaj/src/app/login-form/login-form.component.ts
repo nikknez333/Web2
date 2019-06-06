@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../Services/login.service';
+import { Routes, RouterModule } from '@angular/router';
+import {Router} from "@angular/router"
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @Component({
@@ -9,7 +12,7 @@ import { LoginService } from '../Services/login.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +25,11 @@ export class LoginFormComponent implements OnInit {
       {
         var accessToken = res.access_token;
         localStorage.setItem('token', accessToken);
+        
+        this.router.navigate(['/home']);
+
+      }, error => {
+        console.log(error);
       });
   }
 

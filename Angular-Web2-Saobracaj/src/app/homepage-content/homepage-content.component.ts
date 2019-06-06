@@ -10,6 +10,7 @@ export class HomepageContentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

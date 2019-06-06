@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import {CenovnikComponent} from './cenovnik/cenovnik.component'
 import {HomepageContentComponent} from './homepage-content/homepage-content.component'
 import {LoginFormComponent} from './login-form/login-form.component'
@@ -8,6 +9,8 @@ import {NavigationBarComponent} from './navigation-bar/navigation-bar.component'
 import {RedVoznjeComponent} from './red-voznje/red-voznje.component'
 import {RegisterFormComponent} from './register-form/register-form.component'
 import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
+
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'timetable',
-    component: RedVoznjeComponent
+    component: RedVoznjeComponent,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'pricing',

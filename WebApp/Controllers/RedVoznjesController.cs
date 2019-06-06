@@ -22,6 +22,7 @@ namespace WebApp.Controllers
         public List<string> Saobracaji { get; set; }
     }
 
+    [Authorize(Roles = "Admin")]
     public class RedVoznjesController : ApiController
     {
         private readonly IRedoviVoznjeRepository _repo;
@@ -34,6 +35,7 @@ namespace WebApp.Controllers
         }
 
         // GET: api/RedVoznjes
+        [AllowAnonymous]
         public IHttpActionResult GetRedVoznjeString()
         {
             ResponseData responseData = new ResponseData();
@@ -54,8 +56,8 @@ namespace WebApp.Controllers
             return Ok(responseData);
         }
 
-        // GET: api/RedVoznjes/5
-        [ResponseType(typeof(RedVoznje))]
+        // GET: api/RedVoznjes/5     
+        [ResponseType(typeof(RedVoznje))]       
         public IHttpActionResult GetRedVoznjeById(int id)
         {
             RedVoznje redVoznje = _repo.Get(id);
@@ -68,9 +70,12 @@ namespace WebApp.Controllers
         }
 
         // PUT: api/RedVoznjes/5
+        //[Authorize(Roles ="Administrators")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRedVoznje(int id, RedVoznje redVoznje)
         {
+            
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -102,7 +107,8 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-       // [ResponseType(typeof(RedVoznje))]
+        [AllowAnonymous]
+        [ResponseType(typeof(RedVoznje))]
         public string[] GetRedVoznje(string linija, string dan, string saobracaj)
         {
             if (!ModelState.IsValid)
