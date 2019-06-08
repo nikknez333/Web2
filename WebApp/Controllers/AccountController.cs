@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -320,50 +322,114 @@ namespace WebApp.Controllers
             return logins;
         }
 
+        // POST api/Account/UploadImage
+        [AllowAnonymous]
+        [Route("UploadImage")]
+        public async Task<IHttpActionResult> UploadImage(string email)
+        {
+            try
+            {
+                if (!Request.Content.IsMimeMultipartContent())
+                {
+                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                }
+
+                var files = HttpContext.Current.Request.Files;
+                if (files.Count == 1)
+                {
+                    using (ApplicationDbContext context = new ApplicationDbContext())
+                    {
+                        // int MaxContentLength = 1024 * 1024 * 1; //Size = 1 MB
+                        var postedFile = files[0];
+
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".png" };
+                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                        var extension = ext.ToLower();
+                        if (AllowedFileExtensions.Contains(extension))
+                        {
+                            var filePath = HttpContext.Current.Server.MapPath("~/UserImages/" + email + extension);
+
+                            context.RegistrationStatuses.Add(new RegistrationStatus()
+                            {
+                                UserEmail = email,
+                                ImageUrl = filePath,
+                                Status = "Expecting verification"
+                            });
+
+                            postedFile.SaveAs(filePath);
+                        }
+                    }
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return new System.Web.Http.Results.InternalServerErrorResult(this);
+            }
+        }
+
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+
+                //dodaj ostale podatke korisnika u tabelu koju smo mi kreirali
+                using (ApplicationDbContext context = new ApplicationDbContext())
+                {
+                    Korisnik noviKorisnik = new Korisnik()
+                    {
+                        Email = model.Email,
+                        Adresa = model.Adresa,
+                        Ime = model.Ime,
+                        Prezime = model.Prezime,
+                        DatumRodjenja = model.DatumRodjenja,
+                        IsVerified = model.TipPutnika.Equals("Regularni"), //initial TRUE samo ako je Regularni korisnik
+                        Rola = context.Role.Find("Putnik"),
+                    };
+
+                    context.Korisnici.Add(noviKorisnik);
+
+                    context.Putnici.Add(new Putnici()
+                    {
+                        Korisnik = noviKorisnik,
+                        TipPutnika = context.TipoviPutnika.Find(model.TipPutnika),
+                    });
+
+                    if (!noviKorisnik.IsVerified)
+                    {
+
+                    }
+
+                    context.SaveChanges();
+                }
+
+                return Ok();
             }
-
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email};
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            catch (Exception ex)
             {
-                return GetErrorResult(result);
+                Debug.WriteLine(ex.Message);
+                return new System.Web.Http.Results.InternalServerErrorResult(this);
             }
             
-            //dodaj ostale podatke korisnika u tabelu koju smo mi kreirali
-            ApplicationDbContext context = new ApplicationDbContext();
-
-            Korisnik noviKorisnik = new Korisnik()
-            {
-                Email = model.Email,
-                Adresa = model.Adresa,
-                Ime = model.Ime,
-                Prezime = model.Prezime,
-                DatumRodjenja = model.DatumRodjenja,
-                IsVerified = model.TipPutnika.Equals("Regularni"), //initial TRUE samo ako je Regularni korisnik
-                Rola = context.Role.Find("Putnik"),
-            };
-
-            context.Korisnici.Add(noviKorisnik);
-
-            context.Putnici.Add(new Putnici()
-            {
-                Korisnik = noviKorisnik,
-                TipPutnika = context.TipoviPutnika.Find(model.TipPutnika),
-            });
-            
-            context.SaveChanges();
-
-            return Ok();
         }
 
         // POST api/Account/RegisterExternal

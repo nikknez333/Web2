@@ -23,32 +23,34 @@ namespace WebApp.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "5b", Stanice = null };
-            Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = null };
-            Linija lin3 = new Models.Gradski_Saobracaj.Linija() { Id = 4, RedniBroj = "12", Stanice = null };
-            TipSaobracaja tipSaobracaja1 = new TipSaobracaja() { Id = 1, Naziv = "Gradski" };
-            TipSaobracaja tipSaobracaja2 = new TipSaobracaja() { Id = 2, Naziv = "Medjugradski" };
-            TipDana tipDana1 = new TipDana() { Id = 55, Naziv = "Radni Dan" };
-            TipDana tipDana2 = new TipDana() { Id = 66, Naziv = "Subota" };
-            TipDana tipDana3 = new TipDana() { Id = 77, Naziv = "Nedelja" };
+            //Initial TEST data
+            //executes every time update-database is called
+            //Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "5b", Stanice = null };
+            //Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = null };
+            //Linija lin3 = new Models.Gradski_Saobracaj.Linija() { Id = 4, RedniBroj = "12", Stanice = null };
+            //TipSaobracaja tipSaobracaja1 = new TipSaobracaja() { Id = 1, Naziv = "Gradski" };
+            //TipSaobracaja tipSaobracaja2 = new TipSaobracaja() { Id = 2, Naziv = "Medjugradski" };
+            //TipDana tipDana1 = new TipDana() { Id = 55, Naziv = "Radni Dan" };
+            //TipDana tipDana2 = new TipDana() { Id = 66, Naziv = "Subota" };
+            //TipDana tipDana3 = new TipDana() { Id = 77, Naziv = "Nedelja" };
 
-            context.Linije.Add(lin1);
-            context.Linije.Add(lin2);
-            context.Linije.Add(lin3);
+            //context.Linije.Add(lin1);
+            //context.Linije.Add(lin2);
+            //context.Linije.Add(lin3);
 
 
-            context.TipoviSaobracaja.Add(tipSaobracaja1);
-            context.TipoviSaobracaja.Add(tipSaobracaja2);
+            //context.TipoviSaobracaja.Add(tipSaobracaja1);
+            //context.TipoviSaobracaja.Add(tipSaobracaja2);
 
-            context.TipoviDana.Add(tipDana1);
-            context.TipoviDana.Add(tipDana2);
-            context.TipoviDana.Add(tipDana3);
+            //context.TipoviDana.Add(tipDana1);
+            //context.TipoviDana.Add(tipDana2);
+            //context.TipoviDana.Add(tipDana3);
 
-            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 1, IzabranaLinija = lin1, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = DateTime.Now });
-            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 2, IzabranaLinija = lin1, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 13, 40, 0) });
-            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 3, IzabranaLinija = lin2, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 13, 53, 0) });
-            context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 4, IzabranaLinija = lin2, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 14, 10, 0) });
-            context.SaveChanges();
+            //context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 1, IzabranaLinija = lin1, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = DateTime.Now });
+            //context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 2, IzabranaLinija = lin1, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 13, 40, 0) });
+            //context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 3, IzabranaLinija = lin2, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 13, 53, 0) });
+            //context.RedoviVoznji.AddOrUpdate(rv => rv.Id, new Models.Gradski_Saobracaj.RedVoznje() { Id = 4, IzabranaLinija = lin2, IzabranTipDana = tipDana1, IzabranTipSaobracaja = tipSaobracaja1, Polazak = new DateTime(2019, 8, 3, 14, 10, 0) });
+            //context.SaveChanges();
 
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {

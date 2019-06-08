@@ -26,6 +26,7 @@ namespace WebApp.Persistence
         public DbSet<TipDana> TipoviDana { get; set; }
         public DbSet<TipPutnika> TipoviPutnika { get; set; }
         public DbSet<TipSaobracaja> TipoviSaobracaja { get; set; }
+        public DbSet<RegistrationStatus> RegistrationStatuses { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
