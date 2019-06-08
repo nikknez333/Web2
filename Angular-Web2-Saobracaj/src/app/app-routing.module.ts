@@ -11,6 +11,8 @@ import {RegisterFormComponent} from './register-form/register-form.component'
 import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: 'signUp',
     component: RegisterFormComponent
+  },
+  {
+    path: 'validate',
+    component: ValidateTicketsComponent
+  },
+  {
+    path: 'verify',
+    component: VerifyUserComponent
   }
 ];
 

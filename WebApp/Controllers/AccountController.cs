@@ -357,6 +357,8 @@ namespace WebApp.Controllers
                             });
 
                             postedFile.SaveAs(filePath);
+
+                            context.SaveChanges();
                         }
                     }
                 }
@@ -413,11 +415,6 @@ namespace WebApp.Controllers
                         Korisnik = noviKorisnik,
                         TipPutnika = context.TipoviPutnika.Find(model.TipPutnika),
                     });
-
-                    if (!noviKorisnik.IsVerified)
-                    {
-
-                    }
 
                     context.SaveChanges();
                 }

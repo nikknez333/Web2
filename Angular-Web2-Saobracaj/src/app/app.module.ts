@@ -14,6 +14,8 @@ import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 import { JwtInterceptor } from './Auth/jwt-interceptor';
+import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { JwtInterceptor } from './Auth/jwt-interceptor';
     HomepageContentComponent,
     CenovnikComponent,
     RegisterFormComponent,
-    MrezaLinijaComponent
+    MrezaLinijaComponent,
+    ValidateTicketsComponent,
+    VerifyUserComponent
     
   ],
   imports: [
