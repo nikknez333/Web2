@@ -28,7 +28,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     RegisterFormComponent,
     MrezaLinijaComponent,
     ValidateTicketsComponent,
-    VerifyUserComponent
+    VerifyUserComponent,
     
   ],
   imports: [

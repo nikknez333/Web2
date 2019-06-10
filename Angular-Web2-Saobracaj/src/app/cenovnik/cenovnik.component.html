@@ -24,7 +24,7 @@
                       </ul>
                   </div>
                   <div class="pricingTable-signup">
-                      <a routerLink="/signUp">sign up</a>
+                      <a class="nav-link" (click)="buyTicket('1')" routerLink="/pricing">buy</a>
                   </div>
               </div>
           </div>
@@ -45,8 +45,11 @@
                           <li><b>20</b> Domains</li>
                       </ul>
                   </div>
-                  <div class="pricingTable-signup">
+                  <div class="pricingTable-signup" *ngIf ="!isRegistrated">
                       <a routerLink="/signUp">sign up</a>
+                  </div>
+                  <div class="pricingTable-signup" *ngIf ="isRegistrated">
+                    <a class="nav-link" (click)="buyTicket('2')" routerLink="/pricing">buy</a>
                   </div>
               </div>
           </div>
@@ -66,8 +69,11 @@
                           <li><b>25</b> Domains</li>
                       </ul>
                   </div>
-                  <div class="pricingTable-signup">
+                  <div class="pricingTable-signup" *ngIf ="!isRegistrated">
                       <a routerLink="/signUp">sign up</a>
+                  </div>
+                  <div class="pricingTable-signup" *ngIf ="isRegistrated">
+                    <a class="nav-link" (click)="buyTicket('3')" routerLink="/pricing">buy</a>
                   </div>
               </div>
           </div>
@@ -87,8 +93,11 @@
                           <li><b>30</b> Domains</li>
                       </ul>
                   </div>
-                  <div class="pricingTable-signup">
+                  <div class="pricingTable-signup" *ngIf ="!isRegistrated">
                       <a routerLink="/signUp">sign up</a>
+                  </div>
+                  <div class="pricingTable-signup" *ngIf ="isRegistrated">
+                    <a class="nav-link" (click)="buyTicket('4')" routerLink="/pricing">buy</a>
                   </div>
               </div>
           </div>
