@@ -352,7 +352,7 @@ namespace WebApp.Controllers
                             context.RegistrationStatuses.Add(new RegistrationStatus()
                             {
                                 UserEmail = email,
-                                ImageUrl = filePath,
+                                ImageUrl = "UserImages/" + email + extension,
                                 Status = "Expecting verification"
                             });
 

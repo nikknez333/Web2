@@ -4,7 +4,7 @@
   <th>Account Status</th>
   <tr *ngFor="let account of accounts">
     <td>{{account.UserEmail}}</td>
-    <td><img src="http://localhost:52295/UserImages/corax@gmail.com.jpg" width="100" height="100"/></td> <!--SREDI URL ZA SLIKE-->
+    <td><img src="http://localhost:52295/{{account.ImageUrl}}" width="100" height="100"/></td> <!--SREDI URL ZA SLIKE-->
     <td>{{account.Status}}</td>
     <td><button type="button" (click)="onVerifyClick(account.UserEmail)">Verify</button></td>
   </tr>
