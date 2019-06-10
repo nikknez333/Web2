@@ -96,29 +96,29 @@ namespace WebApp.Migrations
                 userManager.AddToRole(user.Id, "AppUser");
             }
 
-            //Stavka vremenskaKarta = new Stavka() { Id = 1, Naziv = "Vremenska karta" };
-            //Stavka dnevnaKarta = new Stavka() { Id = 2, Naziv = "Dnevna karta" };
-            //Stavka mesecnaKarta = new Stavka() { Id = 3, Naziv = "Mesecna karta" };
-            //Stavka godisnjaKarta = new Stavka() { Id = 4, Naziv = "Godisnja karta" };
+            Stavka vremenskaKarta = new Stavka() { Id = 1, Naziv = "Vremenska karta" };
+            Stavka dnevnaKarta = new Stavka() { Id = 2, Naziv = "Dnevna karta" };
+            Stavka mesecnaKarta = new Stavka() { Id = 3, Naziv = "Mesecna karta" };
+            Stavka godisnjaKarta = new Stavka() { Id = 4, Naziv = "Godisnja karta" };
 
-            //Cenovnik prolecniCenovnik = new Cenovnik { Id = 1, Datum_Pocetak = new DateTime(2019, 4, 25), Datum_Kraj = new DateTime(2019, 12, 12), IsActive = true };
+            Cenovnik prolecniCenovnik = new Cenovnik { Id = 1, Datum_Pocetak = new DateTime(2019, 4, 25), Datum_Kraj = new DateTime(2019, 12, 12), IsActive = true };
 
-            //context.Stavke.Add(vremenskaKarta);
-            //context.Stavke.Add(dnevnaKarta);
-            //context.Stavke.Add(mesecnaKarta);
-            //context.Stavke.Add(godisnjaKarta);
-            //context.Cenovnici.Add(prolecniCenovnik);
+            context.Stavke.Add(vremenskaKarta);
+            context.Stavke.Add(dnevnaKarta);
+            context.Stavke.Add(mesecnaKarta);
+            context.Stavke.Add(godisnjaKarta);
+            context.Cenovnici.Add(prolecniCenovnik);
 
-            //CenaStavke vremenskaKartaStv = new CenaStavke() { Id = 1, Cenovnik = prolecniCenovnik, Stavka = vremenskaKarta, Cena = 1.5 };
-            //CenaStavke dnevnaKartaStv = new CenaStavke() { Id = 2, Cenovnik = prolecniCenovnik, Stavka = dnevnaKarta, Cena = 3.5 };
-            //CenaStavke mesecnaKartaStv = new CenaStavke() { Id = 3, Cenovnik = prolecniCenovnik, Stavka = mesecnaKarta, Cena = 7.5 };
-            //CenaStavke godisnjaKartaStv = new CenaStavke() { Id = 4, Cenovnik = prolecniCenovnik, Stavka = godisnjaKarta, Cena = 15.0 };
+            CenaStavke vremenskaKartaStv = new CenaStavke() { Id = 1, Cenovnik = prolecniCenovnik, Stavka = vremenskaKarta, Cena = 1.5 };
+            CenaStavke dnevnaKartaStv = new CenaStavke() { Id = 2, Cenovnik = prolecniCenovnik, Stavka = dnevnaKarta, Cena = 3.5 };
+            CenaStavke mesecnaKartaStv = new CenaStavke() { Id = 3, Cenovnik = prolecniCenovnik, Stavka = mesecnaKarta, Cena = 7.5 };
+            CenaStavke godisnjaKartaStv = new CenaStavke() { Id = 4, Cenovnik = prolecniCenovnik, Stavka = godisnjaKarta, Cena = 15.0 };
 
-            //context.CeneStavki.Add(vremenskaKartaStv);
-            //context.CeneStavki.Add(dnevnaKartaStv);
-            //context.CeneStavki.Add(mesecnaKartaStv);
-            //context.CeneStavki.Add(godisnjaKartaStv);
+            context.CeneStavki.Add(vremenskaKartaStv);
+            context.CeneStavki.Add(dnevnaKartaStv);
+            context.CeneStavki.Add(mesecnaKartaStv);
+            context.CeneStavki.Add(godisnjaKartaStv);
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
     } }

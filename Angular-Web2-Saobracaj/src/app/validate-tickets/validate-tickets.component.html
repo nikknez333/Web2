@@ -1,3 +1,4 @@
-<p>
-  validate-tickets works!
-</p>
+<input type="number" [(ngModel)] = "ticketId">Id Karte
+<br/>
+<button type="button" name="Validate" (click)="onValidate(ticketId)">Validate</button>
+<h2>Ticket is valid: {{isValid}}</h2>

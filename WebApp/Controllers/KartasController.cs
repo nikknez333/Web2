@@ -23,17 +23,53 @@ namespace WebApp.Controllers
             return db.Karte;
         }
 
+        [Authorize(Roles ="Controller")]
         // GET: api/Kartas/5
-        [ResponseType(typeof(Karta))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult GetKarta(int id)
         {
-            Karta karta = db.Karte.Find(id);
+            
+            Karta karta = db.Karte.Include(x => x.CenaStavke.Stavka).FirstOrDefault(x => x.Id == id);
+            //Karta kartaDrugi = 
             if (karta == null)
             {
                 return NotFound();
             }
 
-            return Ok(karta);
+
+
+            int tipKarte = karta.CenaStavke.Stavka.Id;
+            bool isValid = false;
+
+            //validate karta
+            switch (tipKarte)
+            {                
+                case 1: //vremenska
+                    if (DateTime.Now <= karta.VremeKupovine.AddHours(1))
+                        isValid = true;
+                    break;
+
+                case 2: //dnevna
+                    if (DateTime.Now <= karta.VremeKupovine.AddDays(1))
+                        isValid = true;
+                    break;
+
+                case 3: //mesecna
+                    if (DateTime.Now <= karta.VremeKupovine.AddMonths(1))
+                        isValid = true;
+                    break;
+
+                case 4: //godisnja
+                    if (DateTime.Now <= karta.VremeKupovine.AddYears(1))
+                        isValid = true;
+                    break;
+
+                default:
+                    isValid = false;
+                    break;
+            }
+
+            return Ok(isValid);
         }
 
         // PUT: api/Kartas/5

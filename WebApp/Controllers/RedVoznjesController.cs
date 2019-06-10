@@ -107,6 +107,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         [AllowAnonymous]
         [ResponseType(typeof(RedVoznje))]
         public string[] GetRedVoznje(string linija, string dan, string saobracaj)

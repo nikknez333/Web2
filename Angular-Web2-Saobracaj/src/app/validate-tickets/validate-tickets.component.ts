@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ValidateTicketService } from '../Services/validate-ticket.service';
 
 @Component({
   selector: 'app-validate-tickets',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidateTicketsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private validateService: ValidateTicketService) { }
 
   ngOnInit() {
   }
+  isValid = false;
 
+  onValidate(ticketId)
+  {
+    if(ticketId != null)
+    {
+      this.validateService.validateTicket(ticketId).subscribe(res => {
+        this.isValid = res;
+      }, 
+      error =>{
+        this.isValid = false;
+        console.log(error);
+      });      
+    }
+  }
 }
