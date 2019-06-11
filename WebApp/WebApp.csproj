@@ -254,6 +254,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KartasController.cs" />
+    <Compile Include="Controllers\LinijasController.cs" />
     <Compile Include="Controllers\RedVoznjesController.cs" />
     <Compile Include="Controllers\RegistrationStatusController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -283,6 +284,10 @@
     <Compile Include="Migrations\201906101653498_kartaFixed.cs" />
     <Compile Include="Migrations\201906101653498_kartaFixed.Designer.cs">
       <DependentUpon>201906101653498_kartaFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906111223273_LatLon.cs" />
+    <Compile Include="Migrations\201906111223273_LatLon.Designer.cs">
+      <DependentUpon>201906111223273_LatLon.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -448,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906101653498_kartaFixed.resx">
       <DependentUpon>201906101653498_kartaFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111223273_LatLon.resx">
+      <DependentUpon>201906111223273_LatLon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

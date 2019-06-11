@@ -1,3 +1,26 @@
-<p>
-  mreza-linija works!
-</p>
+<div>
+  <agm-map [latitude]="45.256138" [longitude]="19.828751" [zoom]="14" (mapClick)="placeMarker($event)">
+
+      <agm-marker *ngFor="let stanica of linija.Stanice" [latitude]="stanica.Lat" [longitude]="stanica.Lon"
+       title="naslov neki" [iconUrl]="stationIcon">
+        <agm-info-window [latitude]="stanica.Lat" [longitude]="stanica.Lon" >
+          <span style="font-size: 16px;font-family:'Times New Roman'">{{stanica.Naziv}}</span>
+          <br/>
+          <span style="font-family:'Times New Roman'; color:gray;">{{stanica.Adresa}}</span>
+        </agm-info-window>
+      </agm-marker>
+
+      <agm-polyline strokeColor="blue">
+        <agm-polyline-point *ngFor="let stanica of linija.Stanice" [latitude]="stanica.Lat" [longitude]="stanica.Lon">
+        </agm-polyline-point>
+   </agm-polyline>
+
+  </agm-map>
+
+  <select class="form-control" name="Linije" [(ngModel)]="linSelected">
+      <option *ngFor="let lin of sveLinije" [value]="lin">{{lin}}</option>
+  </select>
+  <!-- <input type="text" placeholder="Unesi broj linije" [(ngModel)]="broj"> -->
+  <button type="button" (click)="onClickPrikazi(linSelected)">Prikazi</button>
+</div>
+

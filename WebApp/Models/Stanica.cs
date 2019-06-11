@@ -10,7 +10,8 @@ namespace WebApp.Models.Gradski_Saobracaj
     {
         public string Adresa { get; set; }
 
-        public string GeoKoordinate { get; set; }
+        public double Lat { get; set; }
+        public double Lon { get; set; }
 
         public int Id { get; set; }
 
