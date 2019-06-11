@@ -29,4 +29,10 @@ export class VerifyUserComponent implements OnInit {
         );
   }
 
+  onDenyClick(email){
+    this.service.denyUser(email).subscribe(res => 
+      this.getAccounts() //refresh data
+      );
+  }
+
 }
