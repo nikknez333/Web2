@@ -19,8 +19,17 @@ export class VerifyUserService {
   verifyUser(email): any{
     let user = new RegStatus();
     user.UserEmail = email;
-    user.Status = "Verified"
-    console.log('putovao serivs');
+    user.Status = "Potvrdjen";
+    //console.log('putovao serivs');
     return this.http.put("http://localhost:52295/api/RegistrationStatus?id="+email, user);
   }
+
+  denyUser(email):any{
+    let user = new RegStatus();
+    user.UserEmail = email;
+    user.Status = "Odbijen";
+    return this.http.put("http://localhost:52295/api/RegistrationStatus?id="+email, user);
+  }
+
+  
 }

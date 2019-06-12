@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -40,7 +41,7 @@ namespace WebApp.Controllers
 
         // PUT: api/RegistrationStatus/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRegistrationStatus(string id/*, RegistrationStatus registrationStatus*/)
+        public IHttpActionResult PutRegistrationStatus(string id, RegistrationStatus registrationStatus)
         {
             if (!ModelState.IsValid)
             {
@@ -55,14 +56,23 @@ namespace WebApp.Controllers
             if (account == null)
                 return NotFound();
 
-            account.Status = "Verified";
+            account.Status = registrationStatus.Status;
             db.Entry(account).State = EntityState.Modified;
+
+            Korisnik user = db.Korisnici.FirstOrDefault(x => x.Email.Equals(id));
+            if (registrationStatus.Status.Equals("Potvrdjen"))
+            { 
+                user.IsVerified = true;
+                db.Entry(user).State = EntityState.Modified;
+            }
+            
 
             //db.Entry(registrationStatus).State = EntityState.Modified;
 
             try
             {
                 db.SaveChanges();
+                sendEmailNotification(account, user.Ime+" "+user.Prezime);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -77,6 +87,33 @@ namespace WebApp.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private async void sendEmailNotification(RegistrationStatus rs, string fullName)
+        {
+            var fromAddress = new MailAddress("apartmanbranislava@gmail.com", "Autobusi NS");
+            var toAddress = new MailAddress(rs.UserEmail, fullName);
+            const string fromPassword = "AWjBkfVXyovOQ48k";
+            const string subject = "Account status changed";
+            string body = string.Format("Dear {0}, \nWe inform you that the status of your account has been changed to: {1}.\n\nBest Wishes, AutobusiNS", fullName, rs.Status); 
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                await smtp.SendMailAsync(message);
+            }
         }
 
         // POST: api/RegistrationStatus
