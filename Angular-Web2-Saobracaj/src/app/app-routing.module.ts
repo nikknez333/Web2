@@ -13,7 +13,11 @@ import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+<<<<<<< HEAD
 import { UserProfileComponent } from './user-profile/user-profile.component';
+=======
+import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
+>>>>>>> 50bf6f86bf6b5b2d9fcb001d21e83c16ca472ffb
 
 const routes: Routes = [
   {
@@ -58,6 +62,10 @@ const routes: Routes = [
     path:'profile',
     component: UserProfileComponent
   }
+    path: 'managment',
+    component: AdminManagmentComponent 
+  },
+  
 ];
 
 @NgModule({

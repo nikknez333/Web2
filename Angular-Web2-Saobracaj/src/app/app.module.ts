@@ -19,6 +19,8 @@ import { JwtInterceptor } from './Auth/jwt-interceptor';
 import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     VerifyUserComponent,
     UserProfileComponent,
     
+    AdminManagmentComponent  
   ],
   imports: [
     BrowserModule,

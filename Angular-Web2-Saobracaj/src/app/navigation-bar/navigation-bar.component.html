@@ -33,10 +33,12 @@
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="/login">Login</a>
         </li>
+        <li class="nav-item" *ngIf="isLoggedIn && isAdmin">
+          <a class="nav-link" routerLink="/managment">Managment</a>
+        </li>
         <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" (click)="LogOut()" routerLink="/home">Logout</a>
         </li>
-        
       </ul>
     </div>
   </nav>
