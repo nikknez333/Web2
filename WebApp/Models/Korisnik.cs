@@ -28,6 +28,9 @@ namespace WebApp.Models
         public List<Karta> KupljenjeKarte { get; set; }
 
         public Rola Rola { get; set; }
-        //public Putnici MyProperty { get; set; }
+
+        public string Status { get; set; }
+        public string ImageUrl { get; set; }
     }
+
 }

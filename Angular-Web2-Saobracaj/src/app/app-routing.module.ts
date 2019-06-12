@@ -13,6 +13,7 @@ import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'verify',
     component: VerifyUserComponent
+  },
+  {
+    path:'profile',
+    component: UserProfileComponent
   }
 ];
 

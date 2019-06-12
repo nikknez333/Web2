@@ -347,18 +347,41 @@ namespace WebApp.Controllers
                         var extension = ext.ToLower();
                         if (AllowedFileExtensions.Contains(extension))
                         {
-                            var filePath = HttpContext.Current.Server.MapPath("~/UserImages/" + email + extension);
+                            var existingRecord = await context.RegistrationStatuses.FindAsync(email);
 
-                            context.RegistrationStatuses.Add(new RegistrationStatus()
+                            if(existingRecord != null)
                             {
-                                UserEmail = email,
-                                ImageUrl = "UserImages/" + email + extension,
-                                Status = "Expecting verification"
-                            });
+                                //user has already uploaded image(s) previously => delete it
+                                var korisnik = await context.Korisnici.FindAsync(email);
+                                var oldPath = HttpContext.Current.Server.MapPath("~/" + korisnik.ImageUrl);
+                                File.Delete(oldPath);
 
+
+                                existingRecord.Status = "Expecting verification";
+                                existingRecord.ImageUrl = "UserImages/" + email + extension;
+                                korisnik.Status = "Expecting verification";
+
+                                //delete record from DB
+                                //context.RegistrationStatuses.Remove(existingRecord);
+                                
+                                await context.SaveChangesAsync();
+                            }
+                            else
+                            {
+                                context.RegistrationStatuses.Add(new RegistrationStatus()
+                                {
+                                    UserEmail = email,
+                                    ImageUrl = "UserImages/" + email + extension,
+                                    Status = "Expecting verification"
+                                });
+
+                                await context.SaveChangesAsync();
+                            }
+
+                            var filePath = HttpContext.Current.Server.MapPath("~/UserImages/" + email + extension);
                             postedFile.SaveAs(filePath);
 
-                            context.SaveChanges();
+                            
                         }
                     }
                 }

@@ -1,0 +1,84 @@
+<div class="container">
+  <h1>Profile Data</h1>
+  <hr>
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="text-center">
+        <img src="http://localhost:52295/{{user.ImageUrl}}" width="150" height="100" class="avatar img-circle" alt="avatar">
+        <h6>Upload a different document...</h6>
+        
+        <input type="file" class="form-control" (change)="onFileSelected($event)">
+      </div>
+
+      <div>
+        <br/>
+        Account Status: <br/><span [style.color]="still">{{user.Status}}</span>
+      </div>
+    </div>
+    
+    <!-- edit form column -->
+    <div class="col-md-9 personal-info">
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        This is an <strong>.alert</strong>. Use this to show important messages to the user.
+      </div>
+      <h3>Personal info</h3>
+      
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">First name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" name="Ime" [value]="user.Ime" [(ngModel)]="user.Ime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Last name:</label>
+          <div class="col-lg-8">
+            <input class="form-control" name="Prezime" type="text" [value]="user.Prezime" [(ngModel)]="user.Prezime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-8">
+            <input class="form-control" name="Email" type="text" [value]="user.Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Adresa:</label>
+          <div class="col-lg-8">
+            <input class="form-control" name="Adresa" type="text" [value]="user.Adresa" [(ngModel)]="user.Adresa">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Datum Rodjenja:</label>
+          <div class="col-lg-8">
+            <input class="form-control" name="DatumRodjenja" type="date" [value]="user.DatumRodjenja" [(ngModel)]="user.DatumRodjenja">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Password:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="password" [value]="user.Password" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Confirm password:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="password" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input type="button" class="btn btn-primary" value="Save Changes" (click)="onSaveChangesClicked()">
+            <span></span>
+            <input type="reset" class="btn btn-default" value="Cancel">
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+</div>
+<hr>

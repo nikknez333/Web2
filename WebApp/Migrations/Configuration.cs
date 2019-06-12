@@ -25,18 +25,18 @@ namespace WebApp.Migrations
 
             //Initial TEST data
             //executes every time update-database is called
-            Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 1, RedniBroj = "5b", Stanice = new System.Collections.Generic.List<Stanica>() };
-            Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = new System.Collections.Generic.List<Stanica>() };
-            Linija lin3 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "12", Stanice = new System.Collections.Generic.List<Stanica>() };
+            //Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 1, RedniBroj = "5b", Stanice = new System.Collections.Generic.List<Stanica>() };
+            //Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = new System.Collections.Generic.List<Stanica>() };
+            //Linija lin3 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "12", Stanice = new System.Collections.Generic.List<Stanica>() };
             //TipSaobracaja tipSaobracaja1 = new TipSaobracaja() { Id = 1, Naziv = "Gradski" };
             //TipSaobracaja tipSaobracaja2 = new TipSaobracaja() { Id = 2, Naziv = "Medjugradski" };
             //TipDana tipDana1 = new TipDana() { Id = 55, Naziv = "Radni Dan" };
             //TipDana tipDana2 = new TipDana() { Id = 66, Naziv = "Subota" };
             //TipDana tipDana3 = new TipDana() { Id = 77, Naziv = "Nedelja" };
 
-            context.Linije.Add(lin1);
-            context.Linije.Add(lin2);
-            context.Linije.Add(lin3);
+            //context.Linije.Add(lin1);
+            //context.Linije.Add(lin2);
+            //context.Linije.Add(lin3);
 
 
             //context.TipoviSaobracaja.AddOrUpdate(tipSaobracaja1);
@@ -123,23 +123,23 @@ namespace WebApp.Migrations
             /*
              * SEED STANICE
              */
-            Stanica s1 = new Stanica() { Id = 1, Naziv = "Jugodrvo", Adresa = "Bulevar Oslobodjenja 112", Lat = 45.242268, Lon = 19.842954, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
-            Stanica s2 = new Stanica() { Id = 2, Naziv = "Limanski Park", Adresa = "Bulevar Oslobodjenja 143", Lat = 45.241643, Lon = 19.84279, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
-            Stanica s3 = new Stanica() { Id = 3, Naziv = "Medlab", Adresa = "Bulevar Oslobodjenja 105", Lat = 45.243701, Lon = 19.84161, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
-            Stanica s4 = new Stanica() { Id = 4, Naziv = "Arteski bunar, ", Adresa = "Bulevar Cara Lazara 85", Lat = 45.24503, Lon = 19.846417, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
-            Stanica s5 = new Stanica() { Id = 5, Naziv = "Univerzitet", Adresa = "Bulevar Cara Lazara 120", Lat = 45.249784, Lon = 19.855412, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
+            //Stanica s1 = new Stanica() { Id = 1, Naziv = "Jugodrvo", Adresa = "Bulevar Oslobodjenja 112", Lat = 45.242268, Lon = 19.842954, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
+            //Stanica s2 = new Stanica() { Id = 2, Naziv = "Limanski Park", Adresa = "Bulevar Oslobodjenja 143", Lat = 45.241643, Lon = 19.84279, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
+            //Stanica s3 = new Stanica() { Id = 3, Naziv = "Medlab", Adresa = "Bulevar Oslobodjenja 105", Lat = 45.243701, Lon = 19.84161, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
+            //Stanica s4 = new Stanica() { Id = 4, Naziv = "Arteski bunar, ", Adresa = "Bulevar Cara Lazara 85", Lat = 45.24503, Lon = 19.846417, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
+            //Stanica s5 = new Stanica() { Id = 5, Naziv = "Univerzitet", Adresa = "Bulevar Cara Lazara 120", Lat = 45.249784, Lon = 19.855412, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
             //lin1.Stanice.Add(s1);
             //lin1.Stanice.Add(s2);
             //lin1.Stanice.Add(s3);
             //lin1.Stanice.Add(s4);
             //lin1.Stanice.Add(s5);
 
-            context.Stanice.AddOrUpdate(s1);
-            context.Stanice.AddOrUpdate(s2);
-            context.Stanice.AddOrUpdate(s3);
-            context.Stanice.AddOrUpdate(s4);
-            context.Stanice.AddOrUpdate(s5);
+            //context.Stanice.AddOrUpdate(s1);
+            //context.Stanice.AddOrUpdate(s2);
+            //context.Stanice.AddOrUpdate(s3);
+            //context.Stanice.AddOrUpdate(s4);
+            //context.Stanice.AddOrUpdate(s5);
 
-            context.SaveChanges();
+            //context.SaveChanges();
         }
     } }

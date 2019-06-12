@@ -48,10 +48,6 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            //if (id != registrationStatus.UserEmail)
-            //{
-            //    return BadRequest();
-            //}
             var account = db.RegistrationStatuses.FirstOrDefault(x => x.UserEmail.Equals(id));
             if (account == null)
                 return NotFound();
@@ -61,10 +57,18 @@ namespace WebApp.Controllers
 
             Korisnik user = db.Korisnici.FirstOrDefault(x => x.Email.Equals(id));
             if (registrationStatus.Status.Equals("Potvrdjen"))
-            { 
+            {
                 user.IsVerified = true;
-                db.Entry(user).State = EntityState.Modified;
             }
+            else
+            {
+                user.IsVerified = false;
+            }
+            user.Status = registrationStatus.Status;
+            //user.ImageUrl = registrationStatus.ImageUrl;
+
+            db.Entry(user).State = EntityState.Modified;
+            
             
 
             //db.Entry(registrationStatus).State = EntityState.Modified;
@@ -72,7 +76,7 @@ namespace WebApp.Controllers
             try
             {
                 db.SaveChanges();
-                sendEmailNotification(account, user.Ime+" "+user.Prezime);
+                //sendEmailNotification(account, user.Ime+" "+user.Prezime);
             }
             catch (DbUpdateConcurrencyException)
             {

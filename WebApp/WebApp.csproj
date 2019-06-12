@@ -254,6 +254,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KartasController.cs" />
+    <Compile Include="Controllers\KorisniksController.cs" />
     <Compile Include="Controllers\LinijasController.cs" />
     <Compile Include="Controllers\RedVoznjesController.cs" />
     <Compile Include="Controllers\RegistrationStatusController.cs" />
@@ -288,6 +289,10 @@
     <Compile Include="Migrations\201906111223273_LatLon.cs" />
     <Compile Include="Migrations\201906111223273_LatLon.Designer.cs">
       <DependentUpon>201906111223273_LatLon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906121411286_korisnikExtendedProperties.cs" />
+    <Compile Include="Migrations\201906121411286_korisnikExtendedProperties.Designer.cs">
+      <DependentUpon>201906121411286_korisnikExtendedProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -456,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906111223273_LatLon.resx">
       <DependentUpon>201906111223273_LatLon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121411286_korisnikExtendedProperties.resx">
+      <DependentUpon>201906121411286_korisnikExtendedProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
