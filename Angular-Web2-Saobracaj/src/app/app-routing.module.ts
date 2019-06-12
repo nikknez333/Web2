@@ -13,6 +13,7 @@ import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
 
 const routes: Routes = [
   {
@@ -52,7 +53,12 @@ const routes: Routes = [
   {
     path: 'verify',
     component: VerifyUserComponent
-  }
+  },
+  {
+    path: 'managment',
+    component: AdminManagmentComponent 
+  },
+  
 ];
 
 @NgModule({

@@ -11,20 +11,26 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(private decodeService:DecodeJwtDataService, private router:Router) { }
   isLoggedIn = false;
+  isAdmin = false;
 
   ngOnInit() {
     this.rola = this.decodeService.getRoleFromToken();
     if(this.rola != "")
     {
-      console.log('rola nije prazna');
-      console.log(this.rola);
       this.isLoggedIn = true;
+    }
+    
+    
+    if(this.rola == "Admin")
+    {
+      this.isAdmin = true;
     }
      
   }
 
   LogOut(){
     this.isLoggedIn = false;
+    this.isAdmin = false;
     this.rola="";
     localStorage.removeItem('token');   
     this.router.navigate(['/home']); 

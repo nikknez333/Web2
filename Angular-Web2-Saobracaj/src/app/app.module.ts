@@ -18,6 +18,8 @@ import { MrezaLinijaComponent } from './mreza-linija/mreza-linija.component';
 import { JwtInterceptor } from './Auth/jwt-interceptor';
 import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     MrezaLinijaComponent,
     ValidateTicketsComponent,
     VerifyUserComponent,
-    
+    AdminManagmentComponent  
   ],
   imports: [
     BrowserModule,
