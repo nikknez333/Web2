@@ -76,7 +76,7 @@ namespace WebApp.Controllers
             try
             {
                 db.SaveChanges();
-                //sendEmailNotification(account, user.Ime+" "+user.Prezime);
+                sendEmailNotification(account, user.Ime+" "+user.Prezime);
             }
             catch (DbUpdateConcurrencyException)
             {
