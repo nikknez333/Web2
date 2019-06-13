@@ -129,6 +129,25 @@ namespace WebApp.Controllers
             karta.CenaStavke = db.CeneStavki.FirstOrDefault(stv => stv.Id == stavkaId && stv.Cenovnik.Id == aktivanCenovnik.Id);
             karta.Kupac = db.Korisnici.FirstOrDefault(kor => kor.Email == User.Identity.Name);
 
+
+            double cenaKarte = karta.CenaStavke.Cena;
+            var kors = db.Putnici.Include(x => x.TipPutnika).FirstOrDefault(x => x.Korisnik.Email.Equals(karta.Kupac.Email));
+
+            string tipPutnika = kors.TipPutnika.Naziv;
+
+            if (tipPutnika != "Regularni")
+            {
+                //kartu je kupio neko od povlascenih korisnika
+                //proveri da li je verifikovan status i primeni popust
+                if(karta.Kupac.IsVerified)
+                {
+                    double popustKoef = db.Koeficijenti.FirstOrDefault(x => x.Naziv.Equals(tipPutnika)).Value;
+                    cenaKarte *= popustKoef;
+                }                    
+            }
+            karta.Cena = cenaKarte;
+            
+
             db.Karte.Add(karta);
             db.SaveChanges();
 

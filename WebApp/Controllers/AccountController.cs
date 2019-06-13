@@ -360,6 +360,7 @@ namespace WebApp.Controllers
                                 existingRecord.Status = "Expecting verification";
                                 existingRecord.ImageUrl = "UserImages/" + email + extension;
                                 korisnik.Status = "Expecting verification";
+                                korisnik.IsVerified = false;
 
                                 //delete record from DB
                                 //context.RegistrationStatuses.Remove(existingRecord);
