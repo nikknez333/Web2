@@ -421,6 +421,8 @@ namespace WebApp.Controllers
                 //dodaj ostale podatke korisnika u tabelu koju smo mi kreirali
                 using (ApplicationDbContext context = new ApplicationDbContext())
                 {
+                    
+                    var rola = User.IsInRole("Admin") ? "Kontrolor" : "Putnik";
                     Korisnik noviKorisnik = new Korisnik()
                     {
                         Email = model.Email,
@@ -429,9 +431,9 @@ namespace WebApp.Controllers
                         Prezime = model.Prezime,
                         DatumRodjenja = model.DatumRodjenja,
                         IsVerified = model.TipPutnika.Equals("Regularni"), //initial TRUE samo ako je Regularni korisnik
-                        Rola = context.Role.Find("Putnik"),
+                        Rola = context.Role.Find(rola),                            
                     };
-
+            
                     context.Korisnici.Add(noviKorisnik);
 
                     context.Putnici.Add(new Putnici()

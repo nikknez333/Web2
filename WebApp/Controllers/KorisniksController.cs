@@ -19,16 +19,9 @@ namespace WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Korisniks
-        [ResponseType(typeof(Korisnik))]
-        public IHttpActionResult GetKorisnikData()
+        public IQueryable<Korisnik> GetKorisnikData()
         {
-            Korisnik korisnik = db.Korisnici.FirstOrDefault(x => x.Email.Equals(User.Identity.Name));
-            if (korisnik == null)
-            {
-                return NotFound();
-            }
-            
-            return Ok(korisnik);
+            return db.Korisnici.Include(kr => kr.Rola).Where(kor => kor.Rola.Naziv == "Kontrolor");
         }
 
         // GET: api/Korisniks/5

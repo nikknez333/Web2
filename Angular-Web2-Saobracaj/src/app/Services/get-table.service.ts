@@ -21,9 +21,17 @@ export class GetTableService {
   private pricesSource = new BehaviorSubject(null);
   prices = this.pricesSource.asObservable();
 
+  private controllerSource = new BehaviorSubject(null);
+  controller = this.controllerSource.asObservable();
+
   changePrices(prices:PriceList[])
   {
     this.pricesSource.next(prices);
+  }
+
+  changeController(controller:BusController[])
+  {
+    this.controllerSource.next(controller);
   }
 
   changeMessage(msg:string){
@@ -50,7 +58,8 @@ export class GetTableService {
       return this.http.get<BusTimetable>('http://localhost:52295/api/RedVoznjes')
 
     }
-    else if(tableName === 'busController'){
+    else if(tableName === 'busControllers'){
+      console.log('2afdsf');
       return this.http.get<BusController>('http://localhost:52295/api/Korisniks')
 
     }
