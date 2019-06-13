@@ -20,6 +20,7 @@ import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.co
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
+import { AdminTableComponent } from './admin-table/admin-table.component';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { AdminManagmentComponent } from './admin-managment/admin-managment.compo
     VerifyUserComponent,
     UserProfileComponent,
     
-    AdminManagmentComponent  
+    AdminManagmentComponent,
+    
+    AdminTableComponent  
   ],
   imports: [
     BrowserModule,
