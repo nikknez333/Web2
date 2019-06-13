@@ -12,7 +12,7 @@ export class RegisterService {
   constructor(private http:HttpClient) { }
 
 register(form: NgForm) : Observable<any> {    
-    var data = "userName=" +'username'+ "&password=" +'password'+ "&grant_type=password";
+    //var data = "userName=" +'username'+ "&password=" +'password'+ "&grant_type=password";
     return this.http.post('http://localhost:52295/api/account/register', form.value);
 }
 

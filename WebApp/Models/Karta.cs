@@ -14,6 +14,8 @@ namespace WebApp.Models
         public CenaStavke CenaStavke { get; set; }
 
         public Korisnik Kupac { get; set; }
+
+        public double Cena { get; set; }
     }
 
 }
