@@ -14,7 +14,15 @@ export class CenovnikComponent implements OnInit {
 
   isRegistrated = false
   rola;
+  data:any[];
   ngOnInit() {
+
+    this.buyTicketServ.getTicketPrices().subscribe(res =>{
+      var info = JSON.parse(JSON.stringify(res));
+      this.data = info;
+      
+      //console.log(this.data[2].Cena);
+    })
 
     this.rola = localStorage.getItem("token");
     if(this.rola != null)

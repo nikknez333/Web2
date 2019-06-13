@@ -15,12 +15,34 @@ namespace WebApp.Controllers
 {
     public class KartasController : ApiController
     {
+        public class StavkaWrapper
+        {
+            public double Cena { get; set; }
+            public double DjakCena { get; set; }
+            public double PenzionerCena { get; set; }
+
+        }
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Kartas
-        public IQueryable<Karta> GetKarte()
+        public StavkaWrapper[] GetCene()
         {
-            return db.Karte;
+            var stavke = db.CeneStavki.Where(x => x.Cenovnik.IsActive).ToArray();
+            double djakKoef = db.Koeficijenti.FirstOrDefault(x => x.Naziv == "Djak").Value;
+            double penzosKoef = db.Koeficijenti.FirstOrDefault(x => x.Naziv == "Penzioner").Value;
+
+            StavkaWrapper[] retValues = new StavkaWrapper[stavke.Count()];
+            for (int i = 0; i < stavke.Count(); i++)
+            {
+                retValues[i] = new StavkaWrapper()
+                {
+                    Cena = stavke[i].Cena,
+                    DjakCena = Math.Round(stavke[i].Cena * djakKoef, 2),
+                    PenzionerCena = Math.Round(stavke[i].Cena * penzosKoef),
+                };
+            }
+
+            return retValues;
         }
 
         [Authorize(Roles ="Controller")]
@@ -50,17 +72,20 @@ namespace WebApp.Controllers
                     break;
 
                 case 2: //dnevna
-                    if (DateTime.Now <= karta.VremeKupovine.AddDays(1))
+                    if (DateTime.Now.Day == karta.VremeKupovine.Day && 
+                        DateTime.Now.Month == karta.VremeKupovine.Month && 
+                        DateTime.Now.Year == karta.VremeKupovine.Year)
                         isValid = true;
                     break;
 
                 case 3: //mesecna
-                    if (DateTime.Now <= karta.VremeKupovine.AddMonths(1))
+                    if (DateTime.Now.Month == karta.VremeKupovine.Month &&
+                        DateTime.Now.Year == karta.VremeKupovine.Year)
                         isValid = true;
                     break;
 
                 case 4: //godisnja
-                    if (DateTime.Now <= karta.VremeKupovine.AddYears(1))
+                    if (DateTime.Now.Year == karta.VremeKupovine.Year)
                         isValid = true;
                     break;
 
@@ -142,7 +167,7 @@ namespace WebApp.Controllers
                 if(karta.Kupac.IsVerified)
                 {
                     double popustKoef = db.Koeficijenti.FirstOrDefault(x => x.Naziv.Equals(tipPutnika)).Value;
-                    cenaKarte *= popustKoef;
+                    cenaKarte = Math.Round(cenaKarte * popustKoef, 2);
                 }                    
             }
             karta.Cena = cenaKarte;
