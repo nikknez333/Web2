@@ -15,6 +15,7 @@ import { ValidateTicketsComponent } from './validate-tickets/validate-tickets.co
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
+import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'managment',
     component: AdminManagmentComponent 
+  },
+  {
+    path: 'CenaStavke',
+    component:AddCenaStavkeComponent
   }
 ];
 

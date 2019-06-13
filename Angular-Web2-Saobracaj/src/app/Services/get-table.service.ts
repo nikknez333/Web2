@@ -30,6 +30,10 @@ export class GetTableService {
     this.messageSource.next(msg);
   }
 
+  deletePriceList(id){
+    return this.http.delete('http://localhost:52295/api/CenaStavkes?id='+id);
+  }
+
   getTableService(tableName:string):Observable<any>{
 
     if(tableName === 'Price'){

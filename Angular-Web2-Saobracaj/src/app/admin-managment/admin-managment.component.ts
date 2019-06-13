@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminTableComponent } from '../admin-table/admin-table.component';
 import { GetTableService } from '../Services/get-table.service';
 import { PriceList } from '../Models/pricingModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-managment',
@@ -10,7 +11,7 @@ import { PriceList } from '../Models/pricingModel';
 })
 export class AdminManagmentComponent implements OnInit {
 
-  constructor(private table:GetTableService) { }
+  constructor(private table:GetTableService, private router:Router) { }
 
   message="";
   listPrices:PriceList[];
@@ -30,5 +31,14 @@ export class AdminManagmentComponent implements OnInit {
     this.table.changeMessage(tableName);
     console.log(this.message);
     }
+
+  onAddClick(table){
+    switch(table){
+      case 'Price':
+        this.router.navigate(['/CenaStavke'])
+      break;
+
+    }
   }
+}
 

@@ -21,6 +21,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
+import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { AdminTableComponent } from './admin-table/admin-table.component';
     
     AdminManagmentComponent,
     
-    AdminTableComponent  
+    AdminTableComponent,
+    
+    AddCenaStavkeComponent  
   ],
   imports: [
     BrowserModule,

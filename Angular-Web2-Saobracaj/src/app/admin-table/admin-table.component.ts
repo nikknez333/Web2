@@ -16,4 +16,9 @@ export class AdminTableComponent implements OnInit {
     this.table.message.subscribe(msg =>{ this.clicked = msg;}); 
     this.table.prices.subscribe(msg =>{ this.listPrices = msg;}); 
   }
+
+  onDeleteClick(id){
+    this.table.deletePriceList(id).subscribe(res =>{
+    }, error=>{console.log(error)});
+  }
 }

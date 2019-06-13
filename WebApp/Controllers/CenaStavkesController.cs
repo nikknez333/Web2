@@ -71,19 +71,34 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        public class CenaStavkeWrapper
+        {
+            public int CenovnikID { get; set; }
+            public int StavkaID { get; set; }
+            public double Cena { get; set; }
+        }
+
         // POST: api/CenaStavkes
         [ResponseType(typeof(CenaStavke))]
-        public IHttpActionResult PostCenaStavke(CenaStavke cenaStavke)
+        public IHttpActionResult PostCenaStavke(CenaStavkeWrapper cenaStavkeWrapper)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.CeneStavki.Add(cenaStavke);
+            CenaStavke cs = new CenaStavke()
+            {
+                Cena = cenaStavkeWrapper.Cena,
+                Cenovnik = db.Cenovnici.Find(cenaStavkeWrapper.CenovnikID),
+                Stavka = db.Stavke.Find(cenaStavkeWrapper.StavkaID),
+            };
+
+            db.CeneStavki.Add(cs);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = cenaStavke.Id }, cenaStavke);
+            // return CreatedAtRoute("DefaultApi", new { id = cenaStavke.Id }, cenaStavke);
+            return Ok();
         }
 
         // DELETE: api/CenaStavkes/5
