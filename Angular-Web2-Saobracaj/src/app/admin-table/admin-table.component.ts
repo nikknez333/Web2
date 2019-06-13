@@ -23,8 +23,14 @@ export class AdminTableComponent implements OnInit {
     this.table.timetable.subscribe(msg => {this.listTimetables = msg;});
   }
 
-  onDeleteClick(id){
+  onPriceDeleteClick(id){
     this.table.deletePriceList(id).subscribe(res =>{
     }, error=>{console.log(error)});
   }
+
+  onControllorDeleteClick(email){
+    this.table.deleteControllor(email).subscribe(res =>{
+      }, error=>{console.log(error)});
+  }
+  
 }

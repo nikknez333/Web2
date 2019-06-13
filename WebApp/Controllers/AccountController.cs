@@ -359,7 +359,7 @@ namespace WebApp.Controllers
 
                                 existingRecord.Status = "Expecting verification";
                                 existingRecord.ImageUrl = "UserImages/" + email + extension;
-                                korisnik.Status = "Expecting verification";
+                                korisnik.Status = User.IsInRole("Admin") ? "Potvrdjen" : "Expecting verification";
                                 korisnik.IsVerified = false;
 
                                 //delete record from DB
@@ -373,8 +373,12 @@ namespace WebApp.Controllers
                                 {
                                     UserEmail = email,
                                     ImageUrl = "UserImages/" + email + extension,
-                                    Status = "Expecting verification"
+                                    Status = User.IsInRole("Admin") ? "Potvrdjen" : "Expecting verification",
                                 });
+
+                                var korisnik = await context.Korisnici.FindAsync(email);
+                                korisnik.ImageUrl = "UserImages/" + email + extension;
+                                korisnik.Status = User.IsInRole("Admin") ? "Potvrdjen" : "Expecting verification";
 
                                 await context.SaveChangesAsync();
                             }
@@ -421,8 +425,16 @@ namespace WebApp.Controllers
                 //dodaj ostale podatke korisnika u tabelu koju smo mi kreirali
                 using (ApplicationDbContext context = new ApplicationDbContext())
                 {
-                    
-                    var rola = User.IsInRole("Admin") ? "Kontrolor" : "Putnik";
+                    string rola;
+
+                    if (User.IsInRole("Admin"))
+                    {
+                        rola = "Kontrolor";
+                        model.TipPutnika = "Regularni";
+                    }
+                    else
+                        rola = "Putnik";
+
                     Korisnik noviKorisnik = new Korisnik()
                     {
                         Email = model.Email,

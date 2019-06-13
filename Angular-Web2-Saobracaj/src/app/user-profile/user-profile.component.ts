@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../Services/user.service';
 import { korisnik } from '../Models/korisnik.model';
 import { NgForm } from '@angular/forms';
+import { DecodeJwtDataService } from '../Services/decode-jwt-data.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,9 +11,10 @@ import { NgForm } from '@angular/forms';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private decoder:DecodeJwtDataService) { }
 
   user = new korisnik();
+  email;
   datum;
   selectedFile;
   still = "";
@@ -21,11 +23,12 @@ export class UserProfileComponent implements OnInit {
   ConfirmPassword = "";
 
   ngOnInit() {
+    this.email = this.decoder.getEmailFromToken();
     this.getData();
   }
 
   getData(){
-    this.userService.getUserData(this.user).subscribe(result =>{
+    this.userService.getUserData(this.email).subscribe(result =>{
       this.user = result;
       switch(this.user.Status){
         case "Potvrdjen": 

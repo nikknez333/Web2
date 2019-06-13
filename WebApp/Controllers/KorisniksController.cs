@@ -25,7 +25,7 @@ namespace WebApp.Controllers
         }
 
         // GET: api/Korisniks/5
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         [ResponseType(typeof(Korisnik))]
         public IHttpActionResult GetKorisnik(string id)
         {

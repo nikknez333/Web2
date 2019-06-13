@@ -22,6 +22,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
+import { AddKontrolorComponent } from './add-kontrolor/add-kontrolor.component';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.compon
     
     AdminTableComponent,
     
-    AddCenaStavkeComponent  
+    AddCenaStavkeComponent,
+    
+    AddKontrolorComponent  
   ],
   imports: [
     BrowserModule,

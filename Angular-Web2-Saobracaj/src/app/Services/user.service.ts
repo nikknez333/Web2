@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  getUserData(user): Observable<korisnik>{
-    return this.http.get<korisnik>('http://localhost:52295/api/Korisniks');
+  getUserData(email): Observable<korisnik>{
+    return this.http.get<korisnik>('http://localhost:52295/api/Korisniks?id='+email);
   }
 
   saveUserChanges(user): any{
