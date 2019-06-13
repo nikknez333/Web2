@@ -113,6 +113,9 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
+            var putnik = db.Putnici.Include(x => x.Korisnik).FirstOrDefault(x => x.Korisnik.Email.Equals(id));
+            db.Putnici.Remove(putnik);
+
             db.Korisnici.Remove(korisnik);
             db.SaveChanges();
 

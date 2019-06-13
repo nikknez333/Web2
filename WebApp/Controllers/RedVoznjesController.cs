@@ -161,14 +161,16 @@ namespace WebApp.Controllers
         [ResponseType(typeof(RedVoznje))]
         public IHttpActionResult DeleteRedVoznje(int id)
         {
-            RedVoznje redVoznje = _repo.Get(id);
+            RedVoznje redVoznje = db.RedoviVoznji.Include(x=>x.IzabranaLinija).Include(x=>x.IzabranTipDana).Include(x=>x.IzabranTipSaobracaja).FirstOrDefault(x => x.Id.Equals(id)); //_repo.Get(id);
             if (redVoznje == null)
             {
                 return NotFound();
             }
 
-            _repo.Remove(redVoznje);
-            _unit.Complete();
+            //_repo.Remove(redVoznje);
+            //_unit.Complete();
+            db.RedoviVoznji.Remove(redVoznje);
+            db.SaveChanges();
 
             return Ok(redVoznje);
         }

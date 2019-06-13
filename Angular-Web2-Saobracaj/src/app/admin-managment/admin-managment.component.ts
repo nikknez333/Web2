@@ -56,15 +56,12 @@ export class AdminManagmentComponent implements OnInit {
       case 'Price':
         this.router.navigate(['/CenaStavke'])
       break;
-<<<<<<< HEAD
       case 'Kontrolori':
         this.router.navigate(['/Kontrolori'])
       break;
       case 'Lines':
         this.router.navigate(['/Linije'])
         break;
-=======
->>>>>>> 4d56b7c9fa5d6a045fb19b649cca4c532d082337
 
     }
   }

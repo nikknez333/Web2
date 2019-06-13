@@ -54,6 +54,10 @@ export class GetTableService {
     return this.http.delete('http://localhost:52295/api/Korisniks?id='+email);
   }
 
+  deleteRedVoznje(id){
+    return this.http.delete('http://localhost:52295/api/RedVoznjes?id='+id);
+  }
+
   getTableService(tableName:string):Observable<any>{
 
     if(tableName === 'Price'){

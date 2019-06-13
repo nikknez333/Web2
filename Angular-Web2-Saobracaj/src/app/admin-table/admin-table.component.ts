@@ -34,4 +34,9 @@ export class AdminTableComponent implements OnInit {
       }, error=>{console.log(error)});
   }
 
+  onRedVoznjeDeleteClick(id){
+    this.table.deleteRedVoznje(id).subscribe(res =>{
+    }, error=>{console.log(error)});
+  }
+
 }
