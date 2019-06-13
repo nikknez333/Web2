@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../Services/user.service';
 import { korisnik } from '../Models/korisnik.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,6 +16,9 @@ export class UserProfileComponent implements OnInit {
   datum;
   selectedFile;
   still = "";
+  passwordMismatch = false;
+  NewPassword = "";
+  ConfirmPassword = "";
 
   ngOnInit() {
     this.getData();
@@ -46,7 +50,22 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  onSaveChangesClicked(){
+  onSaveChangesClicked(f:NgForm){
+    // if(this.NewPassword != "" || this.ConfirmPassword!="")
+    // {
+    //   console.log(this.NewPassword);
+    //   console.log(this.ConfirmPassword);
+    //   console.log('ima nesto u pasvordima');
+    //     if(this.NewPassword != this.ConfirmPassword)
+    //     {
+    //       console.log('mismatch');
+    //       this.passwordMismatch=true;
+    //       return;
+    //     }
+    //     else{
+    //       this.passwordMismatch = false;
+    //     }
+    // }
     this.userService.saveUserChanges(this.user).subscribe(res =>
       {
         if(this.selectedFile != null)
@@ -55,9 +74,15 @@ export class UserProfileComponent implements OnInit {
           imageData.append('file', this.selectedFile, this.selectedFile.name);
           this.userService.uploadImage(imageData, this.user.Email).subscribe(res=>{
             this.getData(); //ne prikazuje novu sliku jer je browser iskesirao staru pod istim imenom
-          });
-          
+          });          
         }
+
+        
+        // data.append('NewPassword', this.tbPassword);
+        // data.append('ConfirmPassword', this.tbPasswordConfirm);
+        this.userService.changePassword(f).subscribe(res =>{
+          console.log(res);
+        }, error=>{console.log(error)});
 
         
       });
