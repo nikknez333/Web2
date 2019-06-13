@@ -1,7 +1,11 @@
+import { linija } from './linija.model';
+import { TipDana } from './tipDana.model';
+import { TipSaobracaja } from './tipSaobracaja.model';
+
 export class BusTimetable{
     public Id:number;
-    public Polazak:Date;
-    public IzabranaLinija_Id: number;
-    public IzabranTipDana_Id: number;
-    public IzabranTipSaobracaja: number;
+    public Polazak: string;
+    public Linija: linija;
+    public Dan: TipDana;
+    public Saobracaj: TipSaobracaja;
 }

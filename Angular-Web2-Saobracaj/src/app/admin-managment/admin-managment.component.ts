@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AdminTableComponent } from '../admin-table/admin-table.component';
 import { GetTableService } from '../Services/get-table.service';
 import { PriceList } from '../Models/pricingModel';
-<<<<<<< HEAD
 import { Router } from '@angular/router';
-=======
 import { BusController } from '../Models/busController.model';
->>>>>>> eee2f52c14704b1c5474f0e05bd1a7decc24cbde
+import { BusTimetable } from '../Models/busTimetables.model';
 
 @Component({
   selector: 'app-admin-managment',
@@ -20,6 +18,7 @@ export class AdminManagmentComponent implements OnInit {
   message="";
   listPrices:PriceList[];
   listControllers:BusController[];
+  listTimetables:BusTimetable[];
 
   ngOnInit() {
     this.table.message.subscribe(msg => this.message = msg);
@@ -39,6 +38,12 @@ export class AdminManagmentComponent implements OnInit {
         let info = JSON.parse(JSON.stringify(res));
         this.listControllers = info;
         this.table.changeController(this.listControllers);
+      }
+      else if(tableName==="busTimetable")
+      {
+        let info = JSON.parse(JSON.stringify(res));
+        this.listTimetables = info;
+        this.table.changeTimetable(this.listTimetables);
       }
     });
     console.log('usao admMan');

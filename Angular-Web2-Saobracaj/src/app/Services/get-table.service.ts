@@ -24,6 +24,9 @@ export class GetTableService {
   private controllerSource = new BehaviorSubject(null);
   controller = this.controllerSource.asObservable();
 
+  private timetableSource = new BehaviorSubject(null);
+  timetable = this.timetableSource.asObservable();
+
   changePrices(prices:PriceList[])
   {
     this.pricesSource.next(prices);
@@ -32,6 +35,11 @@ export class GetTableService {
   changeController(controller:BusController[])
   {
     this.controllerSource.next(controller);
+  }
+
+  changeTimetable(timetable:BusTimetable[])
+  {
+    this.timetableSource.next(timetable);
   }
 
   changeMessage(msg:string){
@@ -55,11 +63,10 @@ export class GetTableService {
       return this.http.get<BusStation>('http://localhost:52295/api/Stanicas')
     }
     else if(tableName === 'busTimetable'){
-      return this.http.get<BusTimetable>('http://localhost:52295/api/RedVoznjes')
+      return this.http.get<BusTimetable>('http://localhost:52295/RedVoznjes/AllRedoviVoznje')
 
     }
     else if(tableName === 'busControllers'){
-      console.log('2afdsf');
       return this.http.get<BusController>('http://localhost:52295/api/Korisniks')
 
     }

@@ -22,6 +22,7 @@ namespace WebApp.Controllers
         public List<string> Saobracaji { get; set; }
     }
 
+
     [Authorize(Roles = "Admin")]
     public class RedVoznjesController : ApiController
     {
@@ -34,8 +35,11 @@ namespace WebApp.Controllers
             _unit = unit;
         }
 
+
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: api/RedVoznjes
         [AllowAnonymous]
+  
         public IHttpActionResult GetRedVoznjeString()
         {
             ResponseData responseData = new ResponseData();
@@ -45,7 +49,7 @@ namespace WebApp.Controllers
                 var linijeList = ctx.Linije.ToArray();
                 var daniList = ctx.TipoviDana.ToList();
                 var saobList = ctx.TipoviSaobracaja.ToList();
-
+                
 
                 responseData.Linije = linijeList.Select(s => s.RedniBroj).ToList();
                 responseData.Saobracaji = saobList.Select(s => s.Naziv).ToList();
@@ -54,6 +58,12 @@ namespace WebApp.Controllers
                 
 
             return Ok(responseData);
+        }
+
+        [Route("RedVoznjes/AllRedoviVoznje")]
+        public IQueryable<RedVoznje> GetAllRedoviVoznji()
+        {
+            return db.RedoviVoznji.Include(lin => lin.IzabranaLinija).Include(dan => dan.IzabranTipDana).Include(sao => sao.IzabranTipSaobracaja);
         }
 
         // GET: api/RedVoznjes/5     
