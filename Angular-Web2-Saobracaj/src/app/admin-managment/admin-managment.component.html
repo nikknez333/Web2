@@ -19,14 +19,14 @@
         </ul>
       </div>
     </label>
-    <input id='Sales' name='radio' type='radio' (click)="getTable('busLine')">
+    <input id='Sales' name='radio' type='radio' (click)="getTable('busLines')">
     <label for='Sales'>
       <a routerLink="/home"><span><i class="fas fa-bus"></i></span>Bus lines</a>
       <div class='lil_arrow'></div>
       <div class='bar'></div>
       <div class='swanky_wrapper__content'>
         <ul>
-            <li>Add</li>
+            <li (click)="onAddClick('Lines')">Add</li>
             <!-- <li>Edit</li>
             <li>Delete</li> -->
         </ul>

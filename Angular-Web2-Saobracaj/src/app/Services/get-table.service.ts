@@ -51,7 +51,7 @@ export class GetTableService {
     if(tableName === 'Price'){
       return this.http.get<PriceList>('http://localhost:52295/api/CenaStavkes')
     }
-    else if(tableName === 'busLine'){
+    else if(tableName === 'busLines'){
       return this.http.get<BusLine>('http://localhost:52295/api/Linijas')
 
     }

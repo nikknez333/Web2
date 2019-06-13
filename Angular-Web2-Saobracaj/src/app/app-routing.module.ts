@@ -17,6 +17,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminManagmentComponent } from './admin-managment/admin-managment.component';
 import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
 import { AddKontrolorComponent } from './add-kontrolor/add-kontrolor.component';
+import { LinijeComponent } from './linije/linije.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,10 @@ const routes: Routes = [
     path:'Kontrolori',
     component:AddKontrolorComponent
   },  
+  {
+    path:'Linije',
+    component:LinijeComponent
+  },
 ];
 
 @NgModule({

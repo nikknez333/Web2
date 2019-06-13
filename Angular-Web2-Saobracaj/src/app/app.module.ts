@@ -23,6 +23,7 @@ import { AdminManagmentComponent } from './admin-managment/admin-managment.compo
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
 import { AddKontrolorComponent } from './add-kontrolor/add-kontrolor.component';
+import { LinijeComponent } from './linije/linije.component';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { AddKontrolorComponent } from './add-kontrolor/add-kontrolor.component';
     
     AddCenaStavkeComponent,
     
-    AddKontrolorComponent  
+    AddKontrolorComponent,
+    
+    LinijeComponent  
   ],
   imports: [
     BrowserModule,

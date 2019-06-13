@@ -51,6 +51,9 @@ export class AdminManagmentComponent implements OnInit {
       case 'Kontrolori':
         this.router.navigate(['/Kontrolori'])
       break;
+      case 'Lines':
+        this.router.navigate(['/Linije'])
+        break;
 
     }
   }

@@ -88,9 +88,9 @@ namespace WebApp.Controllers
 
         // DELETE: api/Linijas/5
         [ResponseType(typeof(Linija))]
-        public IHttpActionResult DeleteLinija(int id)
+        public IHttpActionResult DeleteLinija(string rbr)
         {
-            Linija linija = db.Linije.Find(id);
+            Linija linija = db.Linije.FirstOrDefault(x => x.RedniBroj.Equals(rbr));
             if (linija == null)
             {
                 return NotFound();

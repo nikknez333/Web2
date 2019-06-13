@@ -12,6 +12,7 @@ export class AdminTableComponent implements OnInit {
 
   constructor(private table:GetTableService) {}
   clicked="Price";
+  selected = false;
   listPrices:PriceList[];
   listControllers:BusController[];
   ngOnInit() {
@@ -29,5 +30,5 @@ export class AdminTableComponent implements OnInit {
     this.table.deleteControllor(email).subscribe(res =>{
       }, error=>{console.log(error)});
   }
-  
+
 }
