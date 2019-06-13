@@ -32,42 +32,52 @@
                 <div class="panel-body">
                     <table id="mytable" class="table table-striped table-bordered table-list">
                         <thead>
-                        <tr>
                             <th align="center">
-                                <input type="checkbox" class="checkthis"/>
+                                <input type="checkbox" class="checkthis">
                             </th>
                             <th class="col-tools"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
                             </th>
                             <th class="hidden-xs">ID</th>
-                            <th class="col-text">Name</th>
-                            <th class="col-text">Email</th>
-                        </tr>
+                            <th class="col-text" *ngIf="clicked==='Price'">Price</th>
+                            <th class="col-text" *ngIf="clicked==='Price'">Pricelist Id</th>
+                            <th class="col-text" *ngIf="clicked==='Price'">Date from</th>
+                            <th class="col-text" *ngIf="clicked==='Price'">Date to</th>
+                            <th class="col-text" *ngIf="clicked==='Price'">Active</th>
+                            <th class="col-text" *ngIf="clicked==='Price'">Product Id</th>
+                            <th class="col-text" *ngIf="clicked==='Price'">Product name</th>
+                            <th class="col-text" *ngIf="clicked==='BusLines'">Bus number</th>
+                            <th class="col-text" *ngIf="clicked==='BusLines'">Station</th>
+                            <th class="col-text" *ngIf="clicked==='BusStation'">Adress</th>
+                            <th class="col-text" *ngIf="clicked==='BusStation'">Name</th>
+                            <th class="col-text" *ngIf="clicked==='BusStation'">Lat</th>
+                            <th class="col-text" *ngIf="clicked==='BusStation'">Lon</th>
+                            <th class="col-text" *ngIf="clicked==='BusTimetables'">Bus line</th>
+                            <th class="col-text" *ngIf="clicked==='BusTimetables'">Type of day</th>
+                            <th class="col-text" *ngIf="clicked==='BusTimetables'">Type of service</th>
+                            <th class="col-text" *ngIf="clicked==='BusTimetables'">Start</th>
+                            <th class="col-text" *ngIf="clicked==='BusControllers'">First name</th>
+                            <th class="col-text" *ngIf="clicked==='BusControllers'">Last name</th>
+                            <th class="col-text" *ngIf="clicked==='BusControllers'">Email</th>
+                        
                         </thead>
                         <tbody>
-                        <tr data-status="completed">
+                            <tr *ngFor="let price of listPrices">
                                 <td align="center"><input type="checkbox" class="checkthis"/></td>
-                            <td align="center">
-                                <a class="btn btn-default"><span class="glyphicon glyphicon-pencil"
-                                                                 aria-hidden="true"></span></a>
-                                <a class="btn btn-danger"><span class="glyphicon glyphicon-trash"
-                                                                aria-hidden="true"></span></a>
-                            </td>
-                            <td class="hidden-xs">1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                        </tr>
-                        <tr data-status="pending">
-                            <td align="center"><input type="checkbox" class="checkthis"/></td>
-                            <td align="center">
-                                <a class="btn btn-default"><span class="glyphicon glyphicon-pencil"
-                                                                 aria-hidden="true"></span></a>
-                                <a class="btn btn-danger"><span class="glyphicon glyphicon-trash"
-                                                                aria-hidden="true"></span></a>
-                            </td>
-                            <td class="hidden-xs">2</td>
-                            <td>Jen Curtis</td>
-                            <td>jencurtis@example.com</td>
-                        </tr>
+                                <td align="center">
+                                    <a class="btn btn-default"><span class="glyphicon glyphicon-pencil"
+                                                                    aria-hidden="true"></span></a>
+                                    <a class="btn btn-danger"><span class="glyphicon glyphicon-trash"
+                                                                    aria-hidden="true"></span></a>
+                                    </td>
+                                <td>{{price.Id}}</td>
+                                <td>{{price.Cena}}</td>
+                                <td>{{price.Cenovnik.Id}}</td>
+                                <td>{{price.Cenovnik.Datum_Pocetak}}</td>
+                                <td>{{price.Cenovnik.Datum_Kraj}}</td>
+                                <td>{{price.Cenovnik.IsActive}}</td>
+                                <td>{{price.Stavka.Id}}</td>
+                                <td>{{price.Stavka.Naziv}}</td>
+                            </tr>
                         </tbody>
                     </table>
 

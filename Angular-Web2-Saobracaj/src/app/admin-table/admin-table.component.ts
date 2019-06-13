@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GetTableService } from '../Services/get-table.service';
+import { PriceList } from '../Models/pricingModel';
 
 @Component({
   selector: 'app-admin-table',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTableComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private table:GetTableService) {}
+  clicked="Price";
+  listPrices:PriceList[];
   ngOnInit() {
+    this.table.message.subscribe(msg =>{ this.clicked = msg;}); 
+    this.table.prices.subscribe(msg =>{ this.listPrices = msg;}); 
   }
-
 }

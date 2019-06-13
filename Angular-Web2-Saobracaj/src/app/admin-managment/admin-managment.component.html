@@ -6,7 +6,7 @@
 
 <body>
     <div class="swanky_wrapper">
-    <input id='Dashboard' name='radio' type='radio' (click)="toDo()">
+    <input id='Dashboard' name='radio' type='radio' (click)="getTable('Price')">
     <label for='Dashboard'>
         <a routerLink="/home"><span><i class="fas fa-wallet"></i></span>Price list</a>  
       <div class='lil_arrow'></div>
@@ -19,7 +19,7 @@
         </ul>
       </div>
     </label>
-    <input id='Sales' name='radio' type='radio'>
+    <input id='Sales' name='radio' type='radio' (click)="getTable('busLine')">
     <label for='Sales'>
       <a routerLink="/home"><span><i class="fas fa-bus"></i></span>Bus lines</a>
       <div class='lil_arrow'></div>
@@ -32,7 +32,7 @@
         </ul>
       </div>
     </label>
-    <input id='Messages' name='radio' type='radio'>
+    <input id='Messages' name='radio' type='radio' (click)="getTable('busStation')">
     <label for='Messages'>
       <a routerLink="/home"><span><i class="fas fa-map-marker-alt"></i></span>Bus station</a>
       <div class='lil_arrow'></div>
@@ -45,7 +45,7 @@
         </ul>
       </div>
     </label>
-    <input id='Settings' name='radio' type='radio'>
+    <input id='Settings' name='radio' type='radio' (click)="getTable(busTimetable)">
     <label for='Settings'>
       <a routerLink="/home"><span><i class="fas fa-clock"></i></span>Bus timetables</a>
       <div class='lil_arrow'></div>
@@ -58,7 +58,7 @@
         </ul>
       </div>
     </label>
-    <input id='Users' name='radio' type='radio'>
+    <input id='Users' name='radio' type='radio' (click)="getTable(busController)">
     <label for='Users'>
       <a routerLink="/home"><span><i class="fas fa-users"></i></span>Bus controllers</a>
       <div class='lil_arrow'></div>

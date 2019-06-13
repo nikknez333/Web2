@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminTableComponent } from '../admin-table/admin-table.component';
+import { GetTableService } from '../Services/get-table.service';
+import { PriceList } from '../Models/pricingModel';
 
 @Component({
   selector: 'app-admin-managment',
@@ -7,13 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminManagmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private table:GetTableService) { }
+
+  message="";
+  listPrices:PriceList[];
 
   ngOnInit() {
+    this.table.message.subscribe(msg => this.message = msg);
   }
 
-  toDo(){
-    console.log('hehe');
+  getTable(tableName:string){
+    this.table.getTableService(tableName).subscribe(res =>{ 
+      //let info = JSON.parse(JSON.stringify(res));
+      this.listPrices = res;
+      console.log( this.listPrices);
+      this.table.changePrices(this.listPrices);
+    });
+    console.log('usao admMan');
+    this.table.changeMessage(tableName);
+    console.log(this.message);
+    }
   }
 
-}
