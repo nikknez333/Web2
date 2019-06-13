@@ -4,6 +4,7 @@ import { GetTableService } from '../Services/get-table.service';
 import { PriceList } from '../Models/pricingModel';
 import { Router } from '@angular/router';
 import { BusController } from '../Models/busController.model';
+import { BusTimetable } from '../Models/busTimetables.model';
 
 @Component({
   selector: 'app-admin-managment',
@@ -17,6 +18,7 @@ export class AdminManagmentComponent implements OnInit {
   message="";
   listPrices:PriceList[];
   listControllers:BusController[];
+  listTimetables:BusTimetable[];
 
   ngOnInit() {
     this.table.message.subscribe(msg => this.message = msg);
@@ -37,6 +39,12 @@ export class AdminManagmentComponent implements OnInit {
         this.listControllers = info;
         this.table.changeController(this.listControllers);
       }
+      else if(tableName==="busTimetable")
+      {
+        let info = JSON.parse(JSON.stringify(res));
+        this.listTimetables = info;
+        this.table.changeTimetable(this.listTimetables);
+      }
     });
     console.log('usao admMan');
     this.table.changeMessage(tableName);
@@ -48,12 +56,15 @@ export class AdminManagmentComponent implements OnInit {
       case 'Price':
         this.router.navigate(['/CenaStavke'])
       break;
+<<<<<<< HEAD
       case 'Kontrolori':
         this.router.navigate(['/Kontrolori'])
       break;
       case 'Lines':
         this.router.navigate(['/Linije'])
         break;
+=======
+>>>>>>> 4d56b7c9fa5d6a045fb19b649cca4c532d082337
 
     }
   }
