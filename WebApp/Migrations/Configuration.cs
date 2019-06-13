@@ -25,7 +25,6 @@ namespace WebApp.Migrations
 
             //Initial TEST data
             //executes every time update-database is called
-<<<<<<< HEAD
             //Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 1, RedniBroj = "5b", Stanice = new System.Collections.Generic.List<Stanica>() };
             //Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = new System.Collections.Generic.List<Stanica>() };
             //Linija lin3 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "12", Stanice = new System.Collections.Generic.List<Stanica>() };
@@ -34,7 +33,6 @@ namespace WebApp.Migrations
             //TipDana tipDana1 = new TipDana() { Id = 55, Naziv = "Radni Dan" };
             //TipDana tipDana2 = new TipDana() { Id = 66, Naziv = "Subota" };
             //TipDana tipDana3 = new TipDana() { Id = 77, Naziv = "Nedelja" };
-=======
             Linija lin1 = new Models.Gradski_Saobracaj.Linija() { Id = 1, RedniBroj = "5b", Stanice = new System.Collections.Generic.List<Stanica>() };
             Linija lin2 = new Models.Gradski_Saobracaj.Linija() { Id = 3, RedniBroj = "7a", Stanice = new System.Collections.Generic.List<Stanica>() };
             Linija lin3 = new Models.Gradski_Saobracaj.Linija() { Id = 2, RedniBroj = "12", Stanice = new System.Collections.Generic.List<Stanica>() };
@@ -43,7 +41,6 @@ namespace WebApp.Migrations
             TipDana tipDana1 = new TipDana() { Id = 55, Naziv = "Radni Dan" };
             TipDana tipDana2 = new TipDana() { Id = 66, Naziv = "Subota" };
             TipDana tipDana3 = new TipDana() { Id = 77, Naziv = "Nedelja" };
->>>>>>> 50bf6f86bf6b5b2d9fcb001d21e83c16ca472ffb
 
             //context.Linije.Add(lin1);
             //context.Linije.Add(lin2);
@@ -134,7 +131,6 @@ namespace WebApp.Migrations
             /*
              * SEED STANICE
              */
-<<<<<<< HEAD
             //Stanica s1 = new Stanica() { Id = 1, Naziv = "Jugodrvo", Adresa = "Bulevar Oslobodjenja 112", Lat = 45.242268, Lon = 19.842954, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
             //Stanica s2 = new Stanica() { Id = 2, Naziv = "Limanski Park", Adresa = "Bulevar Oslobodjenja 143", Lat = 45.241643, Lon = 19.84279, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
             //Stanica s3 = new Stanica() { Id = 3, Naziv = "Medlab", Adresa = "Bulevar Oslobodjenja 105", Lat = 45.243701, Lon = 19.84161, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
@@ -145,7 +141,6 @@ namespace WebApp.Migrations
             //lin1.Stanice.Add(s3);
             //lin1.Stanice.Add(s4);
             //lin1.Stanice.Add(s5);
-=======
             Stanica s1 = new Stanica() { Id = 1, Naziv = "Jugodrvo", Adresa = "Bulevar Oslobodjenja 112", Lat = 45.242268, Lon = 19.842954, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
             Stanica s2 = new Stanica() { Id = 2, Naziv = "Limanski Park", Adresa = "Bulevar Oslobodjenja 143", Lat = 45.241643, Lon = 19.84279, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
             Stanica s3 = new Stanica() { Id = 3, Naziv = "Medlab", Adresa = "Bulevar Oslobodjenja 105", Lat = 45.243701, Lon = 19.84161, Linije = new System.Collections.Generic.List<Linija>() { lin1 } };
@@ -156,7 +151,6 @@ namespace WebApp.Migrations
             lin1.Stanice.Add(s3);
             lin1.Stanice.Add(s4);
             lin1.Stanice.Add(s5);
->>>>>>> 50bf6f86bf6b5b2d9fcb001d21e83c16ca472ffb
 
             //context.Stanice.AddOrUpdate(s1);
             //context.Stanice.AddOrUpdate(s2);

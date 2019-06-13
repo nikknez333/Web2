@@ -12,4 +12,8 @@ export class AdminManagmentComponent implements OnInit {
   ngOnInit() {
   }
 
+  toDo(){
+    console.log('hehe');
+  }
+
 }
