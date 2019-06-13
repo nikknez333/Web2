@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RegisterService } from '../Services/register.service';
 import { Router } from '@angular/router';
+import { DecodeJwtDataService } from '../Services/decode-jwt-data.service';
 
 @Component({
   selector: 'app-register-form',
@@ -10,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class RegisterFormComponent implements OnInit {
   selectedFile: File = null;
-
-  constructor(private registerService: RegisterService, private router:Router) { }
+  rola;
+  constructor(private registerService: RegisterService, private router:Router, private decoder:DecodeJwtDataService) { }
 
   ngOnInit() {
+    this.rola = this.decoder.getRoleFromToken();
   }
 
 
@@ -26,7 +28,15 @@ export class RegisterFormComponent implements OnInit {
         this.registerService.uploadImage(imageData, f.value.Email);
       }
       //display notification "successful register" and redirect to Login page
-      this.router.navigate(['/login']);
+      if(this.rola == 'Admin')
+      {
+        this.router.navigate(['/managment'])
+      }
+      else
+      {
+        this.router.navigate(['/login']);
+      }
+      
     });
     
   }

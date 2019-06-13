@@ -52,7 +52,7 @@
                       <input type="address" id="address" placeholder="Address" class="form-control" name="Adresa" ngModel required #Adresa="ngModel">
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="rola!=='Admin'">
                     <label class="control-label col-sm-3">Tip putnika</label>
                     <div class="col-sm-6">
                         <div class="row">

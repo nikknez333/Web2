@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AdminTableComponent } from '../admin-table/admin-table.component';
 import { GetTableService } from '../Services/get-table.service';
 import { PriceList } from '../Models/pricingModel';
-<<<<<<< HEAD
 import { Router } from '@angular/router';
-=======
 import { BusController } from '../Models/busController.model';
->>>>>>> eee2f52c14704b1c5474f0e05bd1a7decc24cbde
 
 @Component({
   selector: 'app-admin-managment',
@@ -50,6 +47,9 @@ export class AdminManagmentComponent implements OnInit {
     switch(table){
       case 'Price':
         this.router.navigate(['/CenaStavke'])
+      break;
+      case 'Kontrolori':
+        this.router.navigate(['/Kontrolori'])
       break;
 
     }
