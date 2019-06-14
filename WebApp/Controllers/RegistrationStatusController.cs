@@ -97,7 +97,7 @@ namespace WebApp.Controllers
         {
             var fromAddress = new MailAddress("apartmanbranislava@gmail.com", "Autobusi NS");
             var toAddress = new MailAddress(rs.UserEmail, fullName);
-            const string fromPassword = "AWjBkfVXyovOQ48k";
+            const string fromPassword = "";
             const string subject = "Account status changed";
             string body = string.Format("Dear {0}, \nWe inform you that the status of your account has been changed to: {1}.\n\nBest Wishes, AutobusiNS", fullName, rs.Status); 
 
