@@ -18,5 +18,8 @@ namespace WebApp.Models.Gradski_Saobracaj
         public string Naziv { get; set; }
 
         public List<Linija> Linije { get; set; }
+
+        [Timestamp]
+        public byte[] Version { get; set; }
     }
 }

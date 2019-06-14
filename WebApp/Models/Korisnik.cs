@@ -31,6 +31,9 @@ namespace WebApp.Models
 
         public string Status { get; set; }
         public string ImageUrl { get; set; }
+
+        [Timestamp]
+        public byte[] Version { get; set; }
     }
 
 }

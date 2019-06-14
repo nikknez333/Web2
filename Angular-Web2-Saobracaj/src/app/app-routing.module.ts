@@ -18,6 +18,7 @@ import { AdminManagmentComponent } from './admin-managment/admin-managment.compo
 import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
 import { AddKontrolorComponent } from './add-kontrolor/add-kontrolor.component';
 import { LinijeComponent } from './linije/linije.component';
+import { MojeKarteComponent } from './moje-karte/moje-karte.component';
 
 
 const routes: Routes = [
@@ -53,11 +54,13 @@ const routes: Routes = [
   },
   {
     path: 'validate',
-    component: ValidateTicketsComponent
+    component: ValidateTicketsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'verify',
-    component: VerifyUserComponent
+    component: VerifyUserComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'profile',
@@ -65,20 +68,28 @@ const routes: Routes = [
   },
   {
     path: 'managment',
-    component: AdminManagmentComponent 
+    component: AdminManagmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'CenaStavke',
-    component:AddCenaStavkeComponent
+    component:AddCenaStavkeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'Kontrolori',
-    component:AddKontrolorComponent
+    component:AddKontrolorComponent,
+    canActivate: [AuthGuard]
   },  
   {
     path:'Linije',
-    component:LinijeComponent
+    component:LinijeComponent,
+    canActivate: [AuthGuard]
   },
+  {
+    path:"mojeKarte",
+    component:MojeKarteComponent
+  }
 ];
 
 @NgModule({

@@ -24,6 +24,7 @@ import { AdminTableComponent } from './admin-table/admin-table.component';
 import { AddCenaStavkeComponent } from './add-cena-stavke/add-cena-stavke.component';
 import { AddKontrolorComponent } from './add-kontrolor/add-kontrolor.component';
 import { LinijeComponent } from './linije/linije.component';
+import { MojeKarteComponent } from './moje-karte/moje-karte.component';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import { LinijeComponent } from './linije/linije.component';
     
     AddKontrolorComponent,
     
-    LinijeComponent  
+    LinijeComponent,
+    
+    MojeKarteComponent  
   ],
   imports: [
     BrowserModule,

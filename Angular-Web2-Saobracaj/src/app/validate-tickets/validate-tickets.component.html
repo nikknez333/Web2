@@ -1,4 +1,7 @@
 <input type="number" [(ngModel)] = "ticketId">Id Karte
 <br/>
 <button type="button" name="Validate" (click)="onValidate(ticketId)">Validate</button>
-<h2>Ticket is valid: {{isValid}}</h2>
+<h2 *ngIf="btnClicked">Ticket is <span [style.color]="isValid? 'green' : 'red'">{{validText}}</span> </h2>
+
+<hr>
+<a class="nav-link" routerLink="/home">Home</a>

@@ -33,7 +33,9 @@ export class CenovnikComponent implements OnInit {
   }
   buyTicket(stavkaId){
     console.log(stavkaId)
-    this.buyTicketServ.buyTicket(stavkaId).subscribe(res =>{});
+    this.buyTicketServ.buyTicket(stavkaId).subscribe(res =>{
+      this.router.navigate(['/mojeKarte']);
+    });
   }
 
 }

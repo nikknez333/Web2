@@ -15,6 +15,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/profile">My Profile</a>
         </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" routerLink="/mojeKarte">My tickets</a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/timetable">Timetables</a>
         </li>

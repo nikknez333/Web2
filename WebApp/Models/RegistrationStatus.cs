@@ -12,5 +12,8 @@ namespace WebApp.Models
         public string UserEmail { get; set; }
         public string ImageUrl { get; set; }
         public string Status { get; set; }
+
+        [Timestamp]
+        public byte[] Version { get; set; }
     }
 }

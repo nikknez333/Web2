@@ -45,10 +45,17 @@ namespace WebApp.Controllers
             return retValues;
         }
 
+        [Authorize]
+        [Route("Karta/GetUserTickets")]
+        public IQueryable<Karta> GetUserTickets(string email)
+        {
+            return db.Karte.Include(k => k.CenaStavke.Stavka).Where(x => x.Kupac.Email.Equals(email));
+        }
+
         [Authorize(Roles ="Controller")]
         // GET: api/Kartas/5
         [ResponseType(typeof(bool))]
-        public IHttpActionResult GetKarta(int id)
+        public IHttpActionResult GetKarta(int id) //validacija karte
         {
             
             Karta karta = db.Karte.Include(x => x.CenaStavke.Stavka).FirstOrDefault(x => x.Id == id);
@@ -98,6 +105,7 @@ namespace WebApp.Controllers
         }
 
         // PUT: api/Kartas/5
+        [Authorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutKarta(int id, Karta karta)
         {
@@ -180,6 +188,7 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [Authorize(Roles ="Admin")]
         // DELETE: api/Kartas/5
         [ResponseType(typeof(Karta))]
         public IHttpActionResult DeleteKarta(int id)

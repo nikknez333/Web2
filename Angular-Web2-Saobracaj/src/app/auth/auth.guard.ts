@@ -15,7 +15,22 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private router: Router, private decodeService:DecodeJwtDataService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean { 
+    
     let rola = this.decodeService.getRoleFromToken();
+    let putanja = route.routeConfig.path;
+    if (putanja === 'verify' || putanja === 'validate'){
+      if(rola === 'Controller')
+      {
+        return true;
+      }
+      else{
+        console.error("Can't access, not controller");
+        this.router.navigate(['/home']);
+        return rola === 'Controller';
+      }
+      
+    }
+
     if (rola === 'Admin') {
       return true;
     }

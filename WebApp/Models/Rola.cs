@@ -12,6 +12,9 @@ namespace WebApp.Models
 
         [Key]
         public string Naziv { get; set; }
-        
+
+        [Timestamp]
+        public byte[] Version { get; set; }
+
     }
 }

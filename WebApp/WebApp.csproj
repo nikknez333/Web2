@@ -301,6 +301,10 @@
     <Compile Include="Migrations\201906131134499_KartaHasCenaProperty.Designer.cs">
       <DependentUpon>201906131134499_KartaHasCenaProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906132329574_TimestampAdded.cs" />
+    <Compile Include="Migrations\201906132329574_TimestampAdded.Designer.cs">
+      <DependentUpon>201906132329574_TimestampAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -474,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906131134499_KartaHasCenaProperty.resx">
       <DependentUpon>201906131134499_KartaHasCenaProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906132329574_TimestampAdded.resx">
+      <DependentUpon>201906132329574_TimestampAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
